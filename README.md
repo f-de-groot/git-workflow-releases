@@ -19,7 +19,8 @@ The other assets are used by the app itself and can be ignored:
 | Asset | Purpose |
 |---|---|
 | `GitWorkflow_x.y.z_x64-setup.exe` | **The installer — this is what you want** |
-| `GitWorkflow_x.y.z_x64-setup.exe.sig` | Signature, verified by the built-in updater |
+| `GitWorkflow_x.y.z_x64_en-US.msi` | Alternative installer for enterprise deployment (Intune/GPO) |
+| `*.sig` | Signatures, verified by the built-in updater |
 | `latest.json` | Update manifest, polled by the built-in updater |
 
 ## Installing
