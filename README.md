@@ -1,3 +1,5 @@
+<img src="logo.png" width="96" alt="GitWorkflow">
+
 # GitWorkflow - releases
 
 Download and update channel for **GitWorkflow**, an internal desktop Git GUI (Tauri + Rust)
