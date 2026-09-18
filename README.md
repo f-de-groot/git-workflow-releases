@@ -22,6 +22,12 @@ git commands can destroy work; keep backups.
 Copyright (c) 2026 F. de Groot. All rights reserved. The libraries the app bundles carry their
 own licences, listed in the application's `NOTICE.md`.
 
+## Manual
+
+New here? **[Read the manual](MANUAL.md)** - installing, the views, the daily git actions,
+worktrees and the terminals, on one page. It is republished with every release, so it describes
+the version on the releases page.
+
 ## Install
 
 Take the installer from the **[latest release](../../releases/latest)** - under **Assets**,
