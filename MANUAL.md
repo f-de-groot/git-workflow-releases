@@ -192,6 +192,31 @@ at once without stashing or switching is the point of the whole app.
 New worktrees are created from the repository itself, never from inside another worktree, and a
 branch can only be checked out in one worktree at a time.
 
+## The Explorer
+
+**Explorer** (Ctrl+3) is the file tree on the left and the files you opened on the right, as tabs.
+
+- **Click a file** to open it; several files stay open at once, each with its own scroll position
+  and undo history. **Ctrl+W** closes the one on screen, **Ctrl+Tab** walks to the next.
+- **Files are editable right away** and **save themselves**: 5 seconds after you stop typing, and
+  immediately when you leave the tab or the view, when the window loses focus, when the tab closes
+  and before any git command that reads your files. **Ctrl+S** writes now. The badge next to the
+  file name says where it stands - **Unsaved changes**, **Saving…**, **Saved**.
+- A file that changed on disk while you were editing it is never overwritten: a bar appears with
+  **Reload from disk** and **Overwrite**.
+- **Ctrl+click a name or an import** jumps to where it is defined. The column beside the code
+  lists the symbols in the file and filters as you type.
+- **Right-click a file or folder** for new file, new folder, rename, delete (to the recycle bin),
+  copy path, show in Explorer, and file history or blame. **Drag a row onto a folder** to move it.
+- **Paste a file from the clipboard:** copy a file anywhere (Windows Explorer, a mail, a
+  screenshot), click the folder in the tree you want it in, and press **Ctrl+V**. It is copied
+  into that folder - a file you click hands it to the folder it sits in, the empty space below the
+  rows is the repository root, and an existing file is never overwritten. Folders cannot be
+  pasted: the clipboard hands over file contents only. A path on the clipboard works just as
+  well (**Copy as path** in Windows Explorer, or this tree's own **Copy absolute path**), and
+  that one has no size limit.
+- **Ctrl+Shift+F** searches the contents of every file in the repository.
+
 ## Issues and pull requests
 
 **Issues** (Ctrl+5) shows the issues of the repository as a **List** with a detail panel, or as a
@@ -229,7 +254,8 @@ prompt.
   them in **Settings -> Claude Prompts**); one click types the prompt and runs it.
 - **Prompts panel:** the **Prompts** button in the Claude tab bar slides open a column with
   everything you asked that session, numbered and timed, with **Reuse** and **Copy** per line.
-  Claude's answers bury your questions otherwise.
+  Claude's answers bury your questions otherwise. After a `/resume` the prompts of the session you
+  picked up appear above the ones you gave here, under a **resumed here** line.
 - **Drag a file onto a terminal tab** (a screenshot, say) and its path lands on the prompt, ready
   for you to type a question after it.
 - Drag the bar between the graph and the dock to resize it. One button always sits in the middle
@@ -244,7 +270,9 @@ prompt.
 | **Ctrl+P** | Command palette: fetch, pull, push, stash, check out any branch, switch repo tab, open a worktree, settings, a new terminal |
 | **Ctrl+C** | Interrupt what the terminal is running |
 | **Ctrl+Shift+C** | Copy the terminal selection (selecting already copies it) |
-| **Ctrl+V** | Paste into the terminal |
+| **Ctrl+V** | Paste into the terminal, or a copied file into the Explorer tree |
+| **Ctrl+S** | Save the file you are editing in the Explorer now |
+| **Ctrl+Shift+F** | Search the contents of every file (Explorer) |
 | **Esc** | Close a dialog or clear the commit search |
 
 The shortcuts work while you are typing in a terminal; the shell does not see them.
