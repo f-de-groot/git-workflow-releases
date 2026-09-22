@@ -204,6 +204,12 @@ branch can only be checked out in one worktree at a time.
   file name says where it stands - **Unsaved changes**, **Saving…**, **Saved**.
 - A file that changed on disk while you were editing it is never overwritten: a bar appears with
   **Reload from disk** and **Overwrite**.
+- **Markdown files** (`.md`) open **rendered**: headings, lists, tables, task lists, links and
+  coloured code blocks, in the app's theme. **Preview** / **Code** next to the file name (or
+  **Ctrl+Shift+V**) switches to the text to edit it; the preview shows what you typed, saved or
+  not. A web link opens in the browser, a link to another file in the repository opens it as a
+  tab, and an image that cannot be shown here (a path inside the repository, for one) shows its
+  alt text instead.
 - **Ctrl+click a name or an import** jumps to where it is defined. The column beside the code
   lists the symbols in the file and filters as you type.
 - **Right-click a file or folder** for new file, new folder, rename, delete (to the recycle bin),
@@ -242,8 +248,10 @@ prompt.
 ## Terminals and Claude
 
 - **+ Terminal** opens a shell (PowerShell on Windows), **+ Claude** opens one that starts
-  `claude` straight away. Both open in the repository you have open. Claude tabs come first in
-  the tab strip, then the plain terminals; **✕** ends that session.
+  `claude` straight away. Both open in the repository you have open. The button sits at the left
+  of the tab strip, and each new tab lands to the right of the ones already open; **✕** ends that
+  session. Above a Claude session, the grey **Prompts** button on the right shows what you asked
+  in it.
 - Terminals keep running in the background - on another repo tab, in another view, with the dock
   closed. Only **✕** on the tab itself ends a session.
 - **Selected text is copied to the clipboard immediately**, so selecting is all it takes.
@@ -273,6 +281,7 @@ prompt.
 | **Ctrl+V** | Paste into the terminal, or a copied file into the Explorer tree |
 | **Ctrl+S** | Save the file you are editing in the Explorer now |
 | **Ctrl+Shift+F** | Search the contents of every file (Explorer) |
+| **Ctrl+Shift+V** | Switch a Markdown file between its rendered and its code view (Explorer) |
 | **Esc** | Close a dialog or clear the commit search |
 
 The shortcuts work while you are typing in a terminal; the shell does not see them.
