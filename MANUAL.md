@@ -264,6 +264,15 @@ prompt.
   everything you asked that session, numbered and timed, with **Reuse** and **Copy** per line.
   Claude's answers bury your questions otherwise. After a `/resume` the prompts of the session you
   picked up appear above the ones you gave here, under a **resumed here** line.
+- **Claude usage:** once a Claude session in the app has had its first answer, the Claude tab bar
+  shows how much of your plan is used, next to the **Prompts** button: **Current session** (the
+  5-hour window) and **Weekly limit** side by side, each with its reset time, a bar and the
+  percentage used. The bar turns orange from 70% and red from 90%. Hover it to see how old the
+  numbers are. It only updates while a Claude session in the app is working; in between it shows
+  the last known numbers, faded after half an hour. Claude Pro and Max only.
+- **Model and effort:** left of the usage, the Claude tab bar shows the model of the session on
+  screen and its effort (and **Fast mode** when it is on). It follows `/model` and `/effort`
+  within a few seconds.
 - **Drag a file onto a terminal tab** (a screenshot, say) and its path lands on the prompt, ready
   for you to type a question after it.
 - Drag the bar between the graph and the dock to resize it. One button always sits in the middle
