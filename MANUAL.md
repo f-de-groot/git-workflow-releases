@@ -120,7 +120,9 @@ the **short hash** and the **date**. Drag the separators to resize; the widths a
 Uncommitted work appears as a row **Uncommitted changes (N)** above the graph. Click it:
 
 - Left: **STAGED** and **CHANGES**. Hover a file for **+ stage** / **− unstage**, or use stage
-  all / unstage all. Right-click a file for **Stash this file** or **Discard changes**.
+  all / unstage all. Right-click a file for **Stash this file**, **Discard changes** or **Show in
+  explorer**, which opens it in the Explorer view at its first change. The diff of a file has the
+  same **Show in explorer** button next to **Side by side** / **Unified**.
 - **Per hunk:** click a file and use **+ Stage hunk** on a hunk header in the diff. That is how
   you split one file over two commits.
 - **⇡ Stash all** at the top puts everything aside in one stash, untracked files included.
@@ -228,7 +230,8 @@ branch can only be checked out in one worktree at a time.
 **Issues** (Ctrl+5) shows the issues of the repository as a **List** with a detail panel, or as a
 **Board** of the GitHub project whose cards you drag between statuses. **+ New issue** (or the
 **+** on a board column, which sets that status) opens a dialog with title, description,
-assignee, labels, type and status; nothing is written until you press **Create issue**.
+assignee, labels, type and status; nothing is written until you press **Create issue**. A new
+issue starts assigned to you (when you can be assigned in that repository) and without labels.
 
 Two buttons hand an issue to Claude: **Pick up in Claude** types it into a session, and **Create
 worktree and pick up in Claude** makes the worktree for it first.
