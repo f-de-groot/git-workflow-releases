@@ -259,7 +259,9 @@ prompt.
   copies explicitly, **Ctrl+V** and **Ctrl+Shift+V** paste, and right-click pastes when nothing
   is selected.
 - **Quick prompts:** above a Claude session sits a row of buttons with your saved prompts (edit
-  them in **Settings -> Claude Prompts**); one click types the prompt and runs it.
+  them in **Settings -> Claude Prompts**); one click types the prompt and runs it. The row is off
+  on a new install: switch it on with **Show quick prompts** on that settings tab. The Terminal
+  view has its own row, switched on in **Settings -> Terminal Prompts**.
 - **Prompts panel:** the **Prompts** button in the Claude tab bar slides open a column with
   everything you asked that session, numbered and timed, with **Reuse** and **Copy** per line.
   Claude's answers bury your questions otherwise. After a `/resume` the prompts of the session you
@@ -300,7 +302,8 @@ The shortcuts work while you are typing in a terminal; the shell does not see th
 - **Workspace** - identities and their GitHub/Bitbucket accounts, and the SSH key per provider.
 - **Claude** - **Use Claude** on or off, the command the **+ Claude** tab runs, and the check
   that tells you whether Claude is usable.
-- **Claude Prompts** and **Terminal Prompts** - the quick prompt buttons above each kind of session.
+- **Claude Prompts** and **Terminal Prompts** - the quick prompt buttons above each kind of session,
+  and **Show quick prompts** to switch each row on or off (off on a new install).
 - **Repository** - commit signing (GPG or SSH, with **Test signing** that signs a throwaway
   object), the external editor, the default worktree folder, what gets copied into a new
   worktree, the browser preview and the local site server.
