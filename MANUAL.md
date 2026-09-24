@@ -135,8 +135,8 @@ Uncommitted work appears as a row **Uncommitted changes (N)** above the graph. C
 ## Branches, merging and rebasing
 
 Right-click a branch - in the sidebar or on its label in the graph, it is the same menu - for
-pull, push, **Start pull request**, checkout, **Create branch here**, rename, pin, hide or solo
-in the graph, delete (also several at once after Ctrl-clicking them), **Edit commit message**,
+pull, push, **Start pull request**, checkout, **Create branch here**, **Copy branch name**, rename,
+pin, hide or solo in the graph, delete (also several at once after Ctrl-clicking them), **Edit commit message**,
 **Revert commit**, **Reset to this commit** and **Create worktree from this commit**.
 
 **Merging and rebasing is drag and drop:** drag a branch onto another branch and pick **Merge**,
@@ -261,6 +261,8 @@ prompt.
   Because of that **Ctrl+C is the interrupt again**, even with text selected. **Ctrl+Shift+C**
   copies explicitly, **Ctrl+V** and **Ctrl+Shift+V** paste, and right-click pastes when nothing
   is selected.
+- A quick click never selects: the pointer has to be held down and dragged a little before a
+  selection starts, so a click that lands next to the input box does not overwrite the clipboard.
 - **Quick prompts:** above a Claude session sits a row of buttons with your saved prompts (edit
   them in **Settings -> Claude Prompts**); one click types the prompt and runs it. The row is off
   on a new install: switch it on with **Show quick prompts** on that settings tab. The Terminal
