@@ -278,8 +278,8 @@ prompt.
   numbers are. It only updates while a Claude session in the app is working; in between it shows
   the last known numbers, faded after half an hour. Claude Pro and Max only.
 - **Model and effort:** left of the usage, the Claude tab bar shows the model of the session on
-  screen and its effort (and **Fast mode** when it is on). It follows `/model` and `/effort`
-  within a few seconds.
+  screen and its effort (and **Fast mode** when it is on). A `/model` or `/effort` switch shows up
+  with Claude's next answer.
 - **Drag a file onto a terminal tab** (a screenshot, say) and its path lands on the prompt, ready
   for you to type a question after it.
 - Drag the bar between the graph and the dock to resize it. One button always sits in the middle
