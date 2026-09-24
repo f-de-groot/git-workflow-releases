@@ -237,7 +237,9 @@ Two buttons hand an issue to Claude: **Pick up in Claude** types it into a sessi
 worktree and pick up in Claude** makes the worktree for it first.
 
 **PULL REQUESTS** in the sidebar lists the open ones. Click a PR to see the full diff in the app,
-with **Open in browser** and **Merge ▾** (merge, squash or rebase, with a confirmation).
+with **Open in browser** and **Merge ▾** (merge, squash or rebase, with a confirmation). After a
+merge the app fetches right away, so the merge commit shows up in the graph without a Fetch by
+hand.
 
 **Right-click a branch -> Start pull request** opens the create dialog: source and target repo
 (so a fork works too), the branches, a title and a description, or **✨ Generate title and
@@ -251,10 +253,10 @@ prompt.
 ## Terminals and Claude
 
 - **+ Terminal** opens a shell (PowerShell on Windows), **+ Claude** opens one that starts
-  `claude` straight away. Both open in the repository you have open. The button sits at the left
-  of the tab strip, and each new tab lands to the right of the ones already open; **✕** ends that
-  session. Above a Claude session, the grey **Prompts** button on the right shows what you asked
-  in it.
+  `claude` straight away. Both open in the repository you have open. The button - with a dashed
+  outline, so it does not look like a tab - sits at the left of the tab strip, and each new tab
+  lands to the right of the ones already open; **✕** ends that session. Above a Claude session,
+  the grey **Prompt history** button on the right shows what you asked in it.
 - Terminals keep running in the background - on another repo tab, in another view, with the dock
   closed. Only **✕** on the tab itself ends a session.
 - **Selected text is copied to the clipboard immediately**, so selecting is all it takes.
@@ -263,16 +265,17 @@ prompt.
   is selected.
 - A quick click never selects: the pointer has to be held down and dragged a little before a
   selection starts, so a click that lands next to the input box does not overwrite the clipboard.
-- **Quick prompts:** above a Claude session sits a row of buttons with your saved prompts (edit
-  them in **Settings -> Claude Prompts**); one click types the prompt and runs it. The row is off
-  on a new install: switch it on with **Show quick prompts** on that settings tab. The Terminal
-  view has its own row, switched on in **Settings -> Terminal Prompts**.
-- **Prompts panel:** the **Prompts** button in the Claude tab bar slides open a column with
+- **Quick prompts:** the **Quick prompts** button in the Claude tab bar, left of **Prompt
+  history**, opens a menu with your saved prompts (edit them in **Settings -> Claude Prompts**);
+  picking one types the prompt and runs it. The button is off on a new install: switch it on with
+  **Show quick prompts** on that settings tab. The Terminal view has its own menu, switched on in
+  **Settings -> Terminal Prompts**.
+- **Prompt history:** the **Prompt history** button in the Claude tab bar slides open a column with
   everything you asked that session, numbered and timed, with **Reuse** and **Copy** per line.
   Claude's answers bury your questions otherwise. After a `/resume` the prompts of the session you
   picked up appear above the ones you gave here, under a **resumed here** line.
 - **Claude usage:** once a Claude session in the app has had its first answer, the Claude tab bar
-  shows how much of your plan is used, next to the **Prompts** button: **Current session** (the
+  shows how much of your plan is used, next to the **Quick prompts** and **Prompt history** buttons: **Current session** (the
   5-hour window) and **Weekly limit** side by side, each with its reset time, a bar and the
   percentage used. The bar turns orange from 70% and red from 90%. Hover it to see how old the
   numbers are. It only updates while a Claude session in the app is working; in between it shows
