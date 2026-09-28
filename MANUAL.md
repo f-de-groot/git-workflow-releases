@@ -75,9 +75,15 @@ switched over with **right-click the remote -> Switch to HTTPS**.
 
 ## The window
 
-- **Topbar:** the repo and current branch on the left; on the right the commit search, **fetch /
-  pull ▾ / push**, **↺ undo ▾**, **📚 Repos**, **⟳ Refresh** and **⚙ Settings**.
-- **Repository tabs** under it: every open repo is a tab, and they are remembered between sessions.
+- **Topbar:** the **repository tabs** on the left - every open repo is a tab with the project's
+  favicon (or the app icon when it has none) and its checked-out branch next to the name, and
+  they are remembered between sessions; on the right **📚 Repos** and **⚙ Settings**. With repo
+  tabs switched off, the repo and current branch are shown instead.
+- **Git toolbar**, above the graph and only in the Git view, on the right: **⟳ Refresh**,
+  **fetch**, **pull ▾**, **push ▾** and **↺ undo ▾**, with the commit search right next to them.
+  The **▾** next to pull and push picks what a click on the button does (for push: push, push and
+  set upstream, or force-push with lease), and the choice is remembered. Force-push always asks
+  first, and the button then reads **force-push** in red.
 - **Sidebar:** LOCAL and REMOTE branches, STASHES, PULL REQUESTS, TAGS, and PROJECT (the file tree).
 - **Views**, switched from the bar or with a shortcut: **Git** (Ctrl+1), **Claude agent**
   (Ctrl+2), **Explorer** (Ctrl+3), **Terminal** (Ctrl+4), **Issues** (Ctrl+5) and **Worktrees**
@@ -109,7 +115,7 @@ the **short hash** and the **date**. Drag the separators to resize; the widths a
   touch, with **×2**, **×3** behind a file more than one of them changed.
 - **Click a branch label** for a detail panel with that commit and its files; **double-click** it
   to check the branch out (uncommitted work is stashed first, and a yellow **⇣ pop stash** button
-  appears in the topbar to put it back).
+  appears in the Git toolbar to put it back).
 - **🔍 Search** filters the graph live on message, author, email, hash or stash, with
   **Enter / Shift+Enter** to jump between matches.
 - The repo is watched for changes, so commits, checkouts and edits from a terminal show up by
@@ -165,7 +171,7 @@ Or resolve them in the terminal, or press **Abort merge / Abort rebase** in the 
 
 ## Undo
 
-**↺ undo ▾** in the topbar reverses the last thing the app did in this repository: a commit
+**↺ undo ▾** in the Git toolbar reverses the last thing the app did in this repository: a commit
 (`reset --soft`, so the files come back staged), a merge or rebase, creating or deleting a
 branch, or dropping a stash. The ▾ shows the last ten; you undo one step at a time. Has the
 repository moved on since, the undo refuses and changes nothing. The list is not persisted: it
@@ -232,6 +238,8 @@ branch can only be checked out in one worktree at a time.
 **+** on a board column, which sets that status) opens a dialog with title, description,
 assignee, labels, type and status; nothing is written until you press **Create issue**. A new
 issue starts assigned to you (when you can be assigned in that repository) and without labels.
+The detail panel shows the description and the comments formatted the way GitHub does, including
+screenshots and other images uploaded to the issue.
 
 Two buttons hand an issue to Claude: **Pick up in Claude** types it into a session, and **Create
 worktree and pick up in Claude** makes the worktree for it first.
