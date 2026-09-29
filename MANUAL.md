@@ -164,8 +164,10 @@ to keep, use *All current / All incoming / All both*, edit the output at the bot
 With Claude available there is also **✨ Resolve with Claude** for one file, **✨ Resolve all with
 AI** for every conflicting file at once, and **✨ Finish rebase with AI**, which keeps resolving
 and continuing until the whole rebase is done. Those runs happen in a panel at the bottom right,
-so you can carry on working; if Claude cannot resolve a file the whole rebase is aborted and your
-branch is exactly where it was.
+so you can carry on working; **Stop** there ends a run at once and leaves the file it was on
+untouched. If Claude cannot resolve a file the whole rebase is aborted and your branch is exactly
+where it was. Which model and effort Claude uses is set under **Settings → Claude → Conflict
+resolution**; by default it follows your own Claude Code settings.
 
 Or resolve them in the terminal, or press **Abort merge / Abort rebase** in the bar.
 
