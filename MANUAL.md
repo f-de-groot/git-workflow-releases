@@ -207,7 +207,10 @@ branch can only be checked out in one worktree at a time.
 **Explorer** (Ctrl+3) is the file tree on the left and the files you opened on the right, as tabs.
 
 - **Click a file** to open it; several files stay open at once, each with its own scroll position
-  and undo history. **Ctrl+W** closes the one on screen, **Ctrl+Tab** walks to the next.
+  and undo history. **Ctrl+W** (or **Ctrl+F4**) closes the one on screen, **Ctrl+Tab** or
+  **Alt+Right** walks to the next and **Ctrl+Shift+Tab** or **Alt+Left** to the previous one.
+  **Ctrl+E** lists the open files, the one you looked at last first: **Enter** takes you back to
+  the file you were just in, typing filters the list.
 - **Files are editable right away** and **save themselves**: 5 seconds after you stop typing, and
   immediately when you leave the tab or the view, when the window loses focus, when the tab closes
   and before any git command that reads your files. **Ctrl+S** writes now. The badge next to the
@@ -220,8 +223,19 @@ branch can only be checked out in one worktree at a time.
   not. A web link opens in the browser, a link to another file in the repository opens it as a
   tab, and an image that cannot be shown here (a path inside the repository, for one) shows its
   alt text instead.
-- **Ctrl+click a name or an import** jumps to where it is defined. The column beside the code
-  lists the symbols in the file and filters as you type.
+- **Ctrl+click a name or an import** (or put the caret on it and press **Ctrl+B**) jumps to where
+  it is defined. The column beside the code lists the symbols in the file and filters as you type.
+- **Ctrl+G** goes to a line: type `42`, or `42:7` for a column as well, and press **Enter**.
+- **Ctrl+F** finds text in the open file. Every match is marked, the current one stronger;
+  **Enter** or **F3** goes to the next one, **Shift+Enter** or **Shift+F3** to the previous one,
+  **Aa** matches case and **Esc** closes the bar with the match still selected. Text you selected
+  on one line becomes the search. **Ctrl+R** opens the same bar with a replace row: **Replace**
+  (or **Enter** in that box) replaces the current match and moves on, **Replace all** does every
+  match at once. Both are one **Ctrl+Z** away.
+- **Line editing:** **Ctrl+/** comments the selected lines out, or back in when they all are
+  comments already (`//`, `#`, `--` or `<!-- -->`, depending on the file type). **Ctrl+D**
+  duplicates the line, or the selection when there is one. **Alt+Shift+Up/Down** moves the
+  selected lines up or down.
 - **Right-click a file or folder** for new file, new folder, rename, delete (to the recycle bin),
   copy path, show in Explorer, and file history or blame. **Drag a row onto a folder** to move it.
 - **Paste a file from the clipboard:** copy a file anywhere (Windows Explorer, a mail, a
@@ -231,7 +245,16 @@ branch can only be checked out in one worktree at a time.
   pasted: the clipboard hands over file contents only. A path on the clipboard works just as
   well (**Copy as path** in Windows Explorer, or this tree's own **Copy absolute path**), and
   that one has no size limit.
-- **Ctrl+Shift+F** searches the contents of every file in the repository.
+- **Press the left Shift twice** (or **Ctrl+Shift+N**) for **Go to file**: type part of a file
+  name and pick it from the files of the project. A slash in what you type matches the folder as
+  well (`models/user`), and `UserController:42` opens the file at line 42. Tick **Include ignored
+  files** (or press the left Shift twice again) to search what git ignores and the dependency
+  folders such as `vendor/` and `node_modules/` as well; they are listed after the project's own
+  files. The box starts unticked every time, and while it is, the popup says how many matches it
+  left out.
+- **Press the right Shift twice** (or **Ctrl+Shift+F**) to search the repository in the sidebar:
+  file names and the contents of every file, in one list. Ignored files and vendor folders are
+  left out here.
 
 ## Issues and pull requests
 
@@ -284,6 +307,13 @@ prompt.
   everything you asked that session, numbered and timed, with **Reuse** and **Copy** per line.
   Claude's answers bury your questions otherwise. After a `/resume` the prompts of the session you
   picked up appear above the ones you gave here, under a **resumed here** line.
+- **Artifacts:** the **Artifacts** button in the Claude tab bar, between **Quick prompts** and
+  **Prompt history**, lists the artifacts Claude published on claude.ai from a Claude Code session
+  in this repository or one of its worktrees, newest first, with their count on the button. Click
+  one to open it: in the Claude desktop app when that is installed, in your browser otherwise.
+  With the desktop app installed, **Browser** at the end of a row opens it in the browser instead.
+  The list is read from Claude Code's own session history on this computer, so an artifact made
+  from claude.ai in the browser or on another computer does not appear.
 - **Claude usage:** once a Claude session in the app has had its first answer, the Claude tab bar
   shows how much of your plan is used, next to the **Quick prompts** and **Prompt history** buttons: **Current session** (the
   5-hour window) and **Weekly limit** side by side, each with its reset time, a bar and the
@@ -309,7 +339,18 @@ prompt.
 | **Ctrl+Shift+C** | Copy the terminal selection (selecting already copies it) |
 | **Ctrl+V** | Paste into the terminal, or a copied file into the Explorer tree |
 | **Ctrl+S** | Save the file you are editing in the Explorer now |
-| **Ctrl+Shift+F** | Search the contents of every file (Explorer) |
+| **Left Shift twice**, **Ctrl+Shift+N** | Go to any file in the project by name; twice again includes ignored files and dependencies (Explorer) |
+| **Right Shift twice**, **Ctrl+Shift+F** | Search file names and the contents of every file (Explorer) |
+| **Ctrl+E** | Recently used files (Explorer) |
+| **Ctrl+G** | Go to a line in the open file (Explorer) |
+| **Ctrl+B** | Go to where the name under the caret is defined (Explorer) |
+| **Ctrl+F**, **F3**, **Shift+F3** | Find in the open file, next and previous match (Explorer) |
+| **Ctrl+R** | Find and replace in the open file (Explorer) |
+| **Ctrl+/** | Comment the selected lines out or back in (Explorer) |
+| **Ctrl+D** | Duplicate the line or the selection (Explorer) |
+| **Alt+Shift+Up/Down** | Move the selected lines up or down (Explorer) |
+| **Ctrl+W**, **Ctrl+F4** | Close the file on screen (Explorer) |
+| **Ctrl+Tab**, **Alt+Left/Right** | Next or previous open file (Explorer) |
 | **Ctrl+Shift+V** | Switch a Markdown file between its rendered and its code view (Explorer) |
 | **Esc** | Close a dialog or clear the commit search |
 
