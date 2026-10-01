@@ -75,21 +75,29 @@ switched over with **right-click the remote -> Switch to HTTPS**.
 
 ## The window
 
-- **Topbar:** the **repository tabs** on the left - every open repo is a tab with the project's
-  favicon (or the app icon when it has none) and its checked-out branch next to the name, and
-  they are remembered between sessions; on the right **📚 Repos** and **⚙ Settings**. With repo
-  tabs switched off, the repo and current branch are shown instead.
-- **Git toolbar**, above the graph and only in the Git view, on the right: **⟳ Refresh**,
-  **fetch**, **pull ▾**, **push ▾** and **↺ undo ▾**, with the commit search right next to them.
-  The **▾** next to pull and push picks what a click on the button does (for push: push, push and
-  set upstream, or force-push with lease), and the choice is remembered. Force-push always asks
-  first, and the button then reads **force-push** in red.
-- **Sidebar:** LOCAL and REMOTE branches, STASHES, PULL REQUESTS, TAGS, and PROJECT (the file tree).
-- **Views**, switched from the bar or with a shortcut: **Git** (Ctrl+1), **Claude agent**
-  (Ctrl+2), **Explorer** (Ctrl+3), **Terminal** (Ctrl+4), **Issues** (Ctrl+5) and **Worktrees**
-  (Ctrl+6). Views you never use can be switched off in **Settings -> Various**.
-- **Terminal dock** at the bottom, on top of everything else. `` Ctrl+` `` opens and closes it;
-  closing it ends nothing.
+Every button has one place, decided by what it works on:
+
+- **Top row - the repository and the app:** the **repository tabs** on the left - every open repo
+  is a tab with the project's favicon (or the app icon when it has none) and its checked-out branch
+  next to the name, and they are remembered between sessions. On the right, first what belongs to
+  the repository on screen - **🌐 Preview** for a website, **Worktree ▾** inside a worktree - and
+  then **PR review**, **Repos ▾** and **⚙ Settings**. With repo tabs switched off, the repo and
+  current branch are shown instead.
+- **Second row - the views:** **Git** (Ctrl+1), **Claude agent** (Ctrl+2), **Explorer** (Ctrl+3),
+  **Terminal** (Ctrl+4), **Issues** (Ctrl+5) and **Worktrees** (Ctrl+6) on the left, and on the
+  right **the buttons of the view you are in** - always in the same spot, with the view's **+**
+  button (+ Claude, + Terminal, + New issue, + New worktree) last. In a narrow window the other
+  views show only their icon. Views you never use can be switched off in **Settings -> Various**.
+- **Git view buttons:** **🔍** search (or **Ctrl+F**), **Refresh**, **⟳ fetch**, **pull ▾**,
+  **push ▾**, **↺ undo ▾**, and **⇣ pop stash** when there is a stash. The **▾** next to pull and
+  push picks what a click on the button does (for push: push, push and set upstream, or force-push
+  with lease), and the choice is remembered. With pull set to fetch, the separate fetch button
+  goes away. Force-push always asks first, and the button then reads **force-push** in red. While
+  the graph is filtered, **only: X ✕** or **N hidden ✕** in front of them shows everything again.
+- **Sidebar** (Git view): LOCAL and REMOTE branches, PULL REQUESTS, TAGS and STASHES.
+- **Status bar** at the bottom: what the app is doing right now (fetching, pulling, refreshing,
+  with a green check when it is done), and on the right the Claude model and your plan usage
+  (see *Terminals and Claude*).
 
 Diffs, settings and opened files appear as a page over the graph with a **✕** at the top right.
 
@@ -115,9 +123,9 @@ the **short hash** and the **date**. Drag the separators to resize; the widths a
   touch, with **×2**, **×3** behind a file more than one of them changed.
 - **Click a branch label** for a detail panel with that commit and its files; **double-click** it
   to check the branch out (uncommitted work is stashed first, and a yellow **⇣ pop stash** button
-  appears in the Git toolbar to put it back).
-- **🔍 Search** filters the graph live on message, author, email, hash or stash, with
-  **Enter / Shift+Enter** to jump between matches.
+  appears among the Git buttons to put it back).
+- **🔍 Search** (or **Ctrl+F**) filters the graph live on message, author, email, hash or stash,
+  with **Enter / Shift+Enter** to jump between matches and **Esc** to clear it.
 - The repo is watched for changes, so commits, checkouts and edits from a terminal show up by
   themselves within about half a second. **⟳ Refresh** is still there.
 
@@ -173,7 +181,7 @@ Or resolve them in the terminal, or press **Abort merge / Abort rebase** in the 
 
 ## Undo
 
-**↺ undo ▾** in the Git toolbar reverses the last thing the app did in this repository: a commit
+**↺ undo ▾** among the Git buttons reverses the last thing the app did in this repository: a commit
 (`reset --soft`, so the files come back staged), a merge or rebase, creating or deleting a
 branch, or dropping a stash. The ▾ shows the last ten; you undo one step at a time. Has the
 repository moved on since, the undo refuses and changes nothing. The list is not persisted: it
@@ -191,13 +199,14 @@ at once without stashing or switching is the point of the whole app.
 - New worktrees can copy the things git does not track but your app needs to run -
   `vendor`, `public/build`, `.env` - from the worktree you came from; the list is in
   **Settings -> Repository -> Copy into a new worktree**.
-- **🌐 Preview** opens the local site of the worktree you are in, at the address your local site
-  server actually serves it on. Optionally the app can create and remove that site per worktree
-  (**Settings -> Repository -> Local site server**).
-- **⎋ Close worktree (PR/Merge)** is how work leaves a worktree: commit, push, then either open a
-  **pull request** or **merge locally**, then clean up the worktree and (optionally) the branch.
-  It stops at the first thing that fails, with nothing removed yet.
-- **✕ Remove worktree** only removes the working directory and keeps the branch and its commits.
+- **🌐 Preview** in the top row opens the local site of the worktree you are in, at the address
+  your local site server actually serves it on. Optionally the app can create and remove that site
+  per worktree (**Settings -> Repository -> Local site server**).
+- **Worktree ▾** in the top row, while you are in a worktree, holds the two ways to end it:
+  - **Close worktree (PR/Merge)…** is how work leaves a worktree: commit, push, then either open a
+    **pull request** or **merge locally**, then clean up the worktree and (optionally) the branch.
+    It stops at the first thing that fails, with nothing removed yet.
+  - **Remove worktree…** only removes the working directory and keeps the branch and its commits.
 
 New worktrees are created from the repository itself, never from inside another worktree, and a
 branch can only be checked out in one worktree at a time.
@@ -286,54 +295,51 @@ prompt.
 ## Terminals and Claude
 
 - **+ Terminal** opens a shell (PowerShell on Windows), **+ Claude** opens one that starts
-  `claude` straight away. Both open in the repository you have open. The button - with a dashed
-  outline, so it does not look like a tab - sits at the left of the tab strip, and each new tab
-  lands to the right of the ones already open; **✕** ends that session. Above a Claude session,
-  the grey **Prompt history** button on the right shows what you asked in it.
-- Terminals keep running in the background - on another repo tab, in another view, with the dock
-  closed. Only **✕** on the tab itself ends a session.
+  `claude` straight away. Both open in the repository you have open. The button is the last one on
+  the right of the view row; the sessions are tabs in the row under it, and **✕** on a tab ends
+  that session.
+- Terminals keep running in the background - on another repo tab, in another view. Only **✕** on
+  the tab itself ends a session.
 - **Selected text is copied to the clipboard immediately**, so selecting is all it takes.
   Because of that **Ctrl+C is the interrupt again**, even with text selected. **Ctrl+Shift+C**
   copies explicitly, **Ctrl+V** and **Ctrl+Shift+V** paste, and right-click pastes when nothing
   is selected.
 - A quick click never selects: the pointer has to be held down and dragged a little before a
   selection starts, so a click that lands next to the input box does not overwrite the clipboard.
-- **Quick prompts:** the **Quick prompts** button in the Claude tab bar, left of **Prompt
-  history**, opens a menu with your saved prompts (edit them in **Settings -> Claude Prompts**);
+- **Quick prompts:** the **Quick prompts** button on the right of the view row opens a menu with your saved prompts (edit them in **Settings -> Claude Prompts**);
   picking one types the prompt and runs it. The button is off on a new install: switch it on with
   **Show quick prompts** on that settings tab. The Terminal view has its own menu, switched on in
   **Settings -> Terminal Prompts**.
-- **Prompt history:** the **Prompt history** button in the Claude tab bar slides open a column with
+- **Prompt history:** the **Prompt history** button (Claude agent view) slides open a column with
   everything you asked that session, numbered and timed, with **Reuse** and **Copy** per line.
   Claude's answers bury your questions otherwise. After a `/resume` the prompts of the session you
   picked up appear above the ones you gave here, under a **resumed here** line.
-- **Artifacts:** the **Artifacts** button in the Claude tab bar, between **Quick prompts** and
+- **Artifacts:** the **Artifacts** button (Claude agent view), between **Quick prompts** and
   **Prompt history**, lists the artifacts Claude published on claude.ai from a Claude Code session
   in this repository or one of its worktrees, newest first, with their count on the button. Click
   one to open it: in the Claude desktop app when that is installed, in your browser otherwise.
   With the desktop app installed, **Browser** at the end of a row opens it in the browser instead.
   The list is read from Claude Code's own session history on this computer, so an artifact made
   from claude.ai in the browser or on another computer does not appear.
-- **Claude usage:** once a Claude session in the app has had its first answer, the Claude tab bar
-  shows how much of your plan is used, next to the **Quick prompts** and **Prompt history** buttons: **Current session** (the
-  5-hour window) and **Weekly limit** side by side, each with its reset time, a bar and the
-  percentage used. The bar turns orange from 70% and red from 90%. Hover it to see how old the
+- **Claude usage:** once a Claude session in the app has had its first answer, the status bar at
+  the bottom shows how much of your plan is used, in every view: **Current session** (the 5-hour
+  window) and **Weekly limit** side by side, each with a bar, the percentage used and its reset
+  time. The bar turns orange from 70% and red from 90%. Hover it to see how old the
   numbers are. It only updates while a Claude session in the app is working; in between it shows
   the last known numbers, faded after half an hour. Claude Pro and Max only.
-- **Model and effort:** left of the usage, the Claude tab bar shows the model of the session on
-  screen and its effort (and **Fast mode** when it is on). A `/model` or `/effort` switch shows up
+- **Model and effort:** left of the usage, in the Claude agent view, the status bar shows the
+  model of the session on screen and its effort (and **Fast mode** when it is on). A `/model` or `/effort` switch shows up
   with Claude's next answer.
 - **Drag a file onto a terminal tab** (a screenshot, say) and its path lands on the prompt, ready
   for you to type a question after it.
-- Drag the bar between the graph and the dock to resize it. One button always sits in the middle
-  of that edge: **Open terminal** when it is closed, **Open graph** when it is open.
 
 ## Keyboard shortcuts
 
 | | |
 |---|---|
 | **Ctrl+1 … Ctrl+6** | Git, Claude agent, Explorer, Terminal, Issues, Worktrees |
-| **Ctrl+`** | Open or close the terminal dock |
+| **Ctrl+`** | Jump to the Terminal view, and back to where you were |
+| **Ctrl+F** | Search the commits (Git view) |
 | **Ctrl+P** | Command palette: fetch, pull, push, stash, check out any branch, switch repo tab, open a worktree, settings, a new terminal |
 | **Ctrl+C** | Interrupt what the terminal is running |
 | **Ctrl+Shift+C** | Copy the terminal selection (selecting already copies it) |
