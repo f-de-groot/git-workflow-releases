@@ -118,7 +118,8 @@ the **short hash** and the **date**. Drag the separators to resize; the widths a
 
 - **Click a commit** to open its files and diff over the graph. **All files** shows the whole
   commit; click one file for just that file. **Side by side / Unified** is a toggle at the top
-  right, and side-by-side highlights the changed words within a line.
+  right, and side-by-side highlights the changed words within a line. A very large diff (over
+  5,000 lines or 1 MB) waits for **Show anyway** before it is drawn.
 - **Ctrl-click / Shift-click** selects several commits: you get one list of every file they
   touch, with **×2**, **×3** behind a file more than one of them changed.
 - **Click a branch label** for a detail panel with that commit and its files; **double-click** it
@@ -371,7 +372,8 @@ The shortcuts work while you are typing in a terminal; the shell does not see th
   and **Show quick prompts** to switch each row on or off (off on a new install).
 - **Repository** - commit signing (GPG or SSH, with **Test signing** that signs a throwaway
   object), the external editor, the default worktree folder, what gets copied into a new
-  worktree, the browser preview and the local site server.
+  worktree, the browser preview and the local site server. The first time a new external editor
+  is used, the app asks once whether to start that program.
 - **Various** - theme (System, Dark or Light, applied instantly, terminals included), which views
   and columns are shown, the start view, font sizes per part of the app, and **Export**/**Import**
   of all your settings as one JSON file.
