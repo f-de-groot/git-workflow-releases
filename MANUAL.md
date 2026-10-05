@@ -175,8 +175,9 @@ AI** for every conflicting file at once, and **✨ Finish rebase with AI**, whic
 and continuing until the whole rebase is done. Those runs happen in a panel at the bottom right,
 so you can carry on working; **Stop** there ends a run at once and leaves the file it was on
 untouched. If Claude cannot resolve a file the whole rebase is aborted and your branch is exactly
-where it was. Which model and effort Claude uses is set under **Settings → Claude → Conflict
-resolution**; by default it follows your own Claude Code settings.
+where it was. Claude reads the whole file but only writes the conflicting parts, so the rest of
+the file stays exactly as it was. Which model and effort Claude uses is set under **Settings →
+Claude → Conflict resolution**; by default it follows your own Claude Code settings.
 
 Or resolve them in the terminal, or press **Abort merge / Abort rebase** in the bar.
 
@@ -366,8 +367,10 @@ The shortcuts work while you are typing in a terminal; the shell does not see th
 ## Settings
 
 - **Workspace** - identities and their GitHub/Bitbucket accounts, and the SSH key per provider.
-- **Claude** - **Use Claude** on or off, the command the **+ Claude** tab runs, and the check
-  that tells you whether Claude is usable.
+- **Claude** - **Use Claude** on or off, the model and effort a new **+ Claude** session starts
+  with, the model and effort for resolving conflicts, the command the **+ Claude** tab runs, and
+  the check that tells you whether Claude is usable. **Claude Code default** leaves the choice to
+  your own Claude Code settings.
 - **Claude Prompts** and **Terminal Prompts** - the quick prompt buttons above each kind of session,
   and **Show quick prompts** to switch each row on or off (off on a new install).
 - **Repository** - commit signing (GPG or SSH, with **Test signing** that signs a throwaway
