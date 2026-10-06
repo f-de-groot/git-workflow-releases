@@ -317,12 +317,24 @@ prompt.
   Claude's answers bury your questions otherwise. After a `/resume` the prompts of the session you
   picked up appear above the ones you gave here, under a **resumed here** line.
 - **Artifacts:** the **Artifacts** button (Claude agent view), between **Quick prompts** and
-  **Prompt history**, lists the artifacts Claude published on claude.ai from a Claude Code session
+  **Skills**, lists the artifacts Claude published on claude.ai from a Claude Code session
   in this repository or one of its worktrees, newest first, with their count on the button. Click
   one to open it: in the Claude desktop app when that is installed, in your browser otherwise.
   With the desktop app installed, **Browser** at the end of a row opens it in the browser instead.
   The list is read from Claude Code's own session history on this computer, so an artifact made
   from claude.ai in the browser or on another computer does not appear.
+- **Skills:** the **Skills** button (Claude agent view), next to **Artifacts**, lists the Claude
+  Code skills a session here can use: your personal ones (every project), the ones of this
+  repository (`.claude/skills`, checked in with it), and read-only the ones from your claude.ai
+  account and from installed plugins. Claude picks a skill by itself when a request matches its
+  description; **Use** at the end of a row types its command into the session to run it
+  explicitly. Click a skill to open it, or **+ New skill** at the bottom to write one. The editor
+  shows the whole `SKILL.md`; on the right, describe what the skill should do (or what should
+  change) and click **Ask Claude**: Claude writes or rewrites the skill and puts it in the editor,
+  with **Undo** if you prefer the old version. Left empty, it sharpens the description and
+  tightens the steps of the current skill. Nothing is saved until you click **Save**. **Delete**
+  moves the skill's folder to the recycle bin. A claude.ai or plugin skill is replaced on its next
+  update, so it cannot be edited here; **Copy as personal skill** gives you a copy that can.
 - **Claude usage:** once a Claude session in the app has had its first answer, the status bar at
   the bottom shows how much of your plan is used, in every view: **Current session** (the 5-hour
   window) and **Weekly limit** side by side, each with a bar, the percentage used and its reset
