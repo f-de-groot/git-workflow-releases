@@ -309,7 +309,8 @@ prompt.
 - A quick click never selects: the pointer has to be held down and dragged a little before a
   selection starts, so a click that lands next to the input box does not overwrite the clipboard.
 - **Quick prompts:** the **Quick prompts** button on the right of the view row opens a menu with your saved prompts (edit them in **Settings -> Claude Prompts**);
-  picking one types the prompt and runs it. The button is off on a new install: switch it on with
+  picking one types the prompt exactly as written and runs it, so a command such as `/resume`
+  works as a quick prompt too. The button is off on a new install: switch it on with
   **Show quick prompts** on that settings tab. The Terminal view has its own menu, switched on in
   **Settings -> Terminal Prompts**.
 - **Prompt history:** the **Prompt history** button (Claude agent view) slides open a column with
