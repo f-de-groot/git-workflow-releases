@@ -348,6 +348,66 @@ prompt.
 - **Drag a file onto a terminal tab** (a screenshot, say) and its path lands on the prompt, ready
   for you to type a question after it.
 
+## Review checklists and reports
+
+A review checklist is the list of things to check after Claude has worked on a task. You approve
+or reject each point and leave comments, Claude fixes what you rejected, and you check again -
+round after round, until everything is approved. Then the checklist becomes a report for a
+colleague or a client. Switch it on with **Use review checklists** under **Settings -> Claude**;
+it applies to Claude sessions started after that.
+
+- **Where it is kept:** in the repository (or worktree) the session works in, under
+  `.claude/checklists/`. That folder ignores itself, so nothing of it ever shows up in **git
+  status** or a commit, and your own `.gitignore` is not touched.
+- **The panel:** the **Checklist** button (Claude agent view) opens a column next to the session.
+  The number on the button is how many points wait for your verdict once Claude has finished a
+  round.
+- **Starting a list:** tick **Track in this session**. Claude is then pointed at the checklist with
+  every prompt and adds points while it works; when there is no checklist yet, your next prompt
+  starts one, named after that prompt. With **Track a checklist in every new session** (Settings)
+  this happens by itself. You can also start one by hand with a title and a description.
+- **Forgot to tick it?** In an empty checklist, **Build from this session** asks the session what it
+  did, and **Build from the changes** has Claude read the uncommitted changes (or the last commit)
+  when the session is gone.
+- **Reviewing:** **✓** approves a point, **✕** rejects it and opens a comment box - write what is
+  wrong, Claude reads it. **Comment** adds a note without a verdict. Click a verdict again to take it
+  back. Add your own points at the bottom; only those can be edited or removed here. Claude's answer
+  to your comment appears under the point, and a point you rejected in an earlier round is marked
+  **check again**.
+- **Sending a round back:** **Send to Claude** hands the rejected points, your comments and your own
+  points to the session on screen, and starts the next round. When Claude marks the round ready you
+  get a Windows notification (**Notify me** in Settings); clicking it opens the checklist.
+- **Screenshots:** **Screenshot** on a point captures a page in the background with the Edge or
+  Chrome on your computer, at desktop size (1440x900) and/or mobile size (390x844) - pick the
+  defaults in Settings. You can also click the box that opens and paste an image (**Ctrl+V**), or
+  drop one on it. Claude can ask for screenshots or save its own; the capture only opens the page,
+  it cannot log in or click.
+- **Marking a screenshot:** click a thumbnail to open it full size and draw a **Circle**, a **Box**,
+  an **Arrow** or a **Number** on it. **Select** a mark and press **Delete** to remove it. Marks
+  Claude suggests are dashed until you click **Use Claude's marks**. The screenshot itself is never
+  changed, so a report can show it with or without the marks.
+- **Mark done** and **Archive** at the bottom keep a finished checklist out of the way; **Reopen**
+  brings it back.
+
+**The report.** **Finish & report** (once every point is approved) or **Report…** opens the report.
+It asks every time, starting from your last answers:
+
+- **Text:** for a client or a colleague, concise or extended, Dutch or English, the client's name and
+  who it is addressed to. **Write with Claude** writes it in the background; **Ask the session**
+  lets the session that did the work write it, since it knows more than the checklist says. **Edit
+  the text** lets you correct it before it goes out.
+- **Look:** screenshots none, plain or marked, links to the pages, the client's logo and your own.
+  The client's logo, support colour and font are looked up in the project and can be changed here;
+  changes show in the preview straight away.
+- **Copy for e-mail** puts the report on the clipboard to paste into a mail. Some mail programs
+  leave pasted images out; attach the PDF then. **Save as PDF…** and **Save as HTML…** save a copy
+  where you pick, and **Open** opens it. Every report is also kept in the checklist folder, under
+  `report/`.
+
+Your company name and logo for the report's footer are set once under **Settings -> Claude**,
+**Reports are prepared by**. The logo is shown in white on the report's dark footer, so a logo
+in one colour (an SVG is best) works well.
+
 ## Keyboard shortcuts
 
 | | |
@@ -383,7 +443,8 @@ The shortcuts work while you are typing in a terminal; the shell does not see th
 - **Claude** - **Use Claude** on or off, the model and effort a new **+ Claude** session starts
   with, the model and effort for resolving conflicts, the command the **+ Claude** tab runs, and
   the check that tells you whether Claude is usable. **Claude Code default** leaves the choice to
-  your own Claude Code settings.
+  your own Claude Code settings. **Review checklist** switches the checklist panel on, with the
+  default screenshot sizes and the name and logo your reports are signed with.
 - **Claude Prompts** and **Terminal Prompts** - the quick prompt buttons above each kind of session,
   and **Show quick prompts** to switch each row on or off (off on a new install).
 - **Repository** - commit signing (GPG or SSH, with **Test signing** that signs a throwaway
