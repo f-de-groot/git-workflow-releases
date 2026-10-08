@@ -145,7 +145,8 @@ Uncommitted work appears as a row **Uncommitted changes (N)** above the graph. C
   past 72 characters, because the first line is what every log and graph shows. Tick
   **Description** for a body under it.
 - **✨ AI commit message** writes the message from the staged diff, in English, in the style of
-  your recent commits.
+  your recent commits. Which model writes it is set under **Settings -> Claude -> AI commit
+  message model**.
 
 ## Branches, merging and rebasing
 
@@ -439,9 +440,13 @@ The shortcuts work while you are typing in a terminal; the shell does not see th
 
 ## Settings
 
+Every option explains itself behind a **?** icon next to it or next to its section title: hover
+it to read the explanation, or click it to keep it open.
+
 - **Workspace** - identities and their GitHub/Bitbucket accounts, and the SSH key per provider.
 - **Claude** - **Use Claude** on or off, the model and effort a new **+ Claude** session starts
-  with, the model and effort for resolving conflicts, the command the **+ Claude** tab runs, and
+  with, the model and effort for resolving conflicts, the model for the AI commit message, the
+  command the **+ Claude** tab runs, and
   the check that tells you whether Claude is usable. **Claude Code default** leaves the choice to
   your own Claude Code settings. **Review checklist** switches the checklist panel on, with the
   default screenshot sizes and the name and logo your reports are signed with.
