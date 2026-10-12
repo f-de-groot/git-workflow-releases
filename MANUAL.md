@@ -303,6 +303,13 @@ prompt.
   that session.
 - Terminals keep running in the background - on another repo tab, in another view. Only **✕** on
   the tab itself ends a session.
+- **What Claude is doing** shows as a dot after the title of its tab: coral and pulsing while
+  Claude works, yellow while it waits for your answer (a permission question, say), and green for
+  an answer that finished while you were looking elsewhere - until you look at that tab. Hover the
+  tab to read it in words. When Claude waits for you or finishes while the window is not in front,
+  or while you are in another tab, view or repository, Windows shows a notification; click it to
+  go straight to that session. A session that was already running before you updated the app
+  shows its dot from the next session on.
 - **Selected text is copied to the clipboard immediately**, so selecting is all it takes.
   Because of that **Ctrl+C is the interrupt again**, even with text selected. **Ctrl+Shift+C**
   copies explicitly, **Ctrl+V** and **Ctrl+Shift+V** paste, and right-click pastes when nothing
@@ -458,7 +465,8 @@ it to read the explanation, or click it to keep it open.
   is used, the app asks once whether to start that program.
 - **Various** - theme (System, Dark or Light, applied instantly, terminals included), which views
   and columns are shown, the start view, font sizes per part of the app, and **Export**/**Import**
-  of all your settings as one JSON file.
+  of all your settings as one JSON file. **Toolbars, tabs & buttons** also sets the size of every
+  button in the app, so they are the same size everywhere.
 - **About** - version, update check, and a link back to this manual.
 
 ## When something goes wrong
