@@ -81,15 +81,14 @@ Every button has one place, decided by what it works on:
   is a tab with the project's favicon (or the app icon when it has none) and its checked-out branch
   next to the name, and they are remembered between sessions. On the right, first what belongs to
   the repository on screen - **🌐 Preview** for a website, **Worktree ▾** inside a worktree - and
-  then **Repos ▾** and **PR review**. With repo tabs switched off, the repo and current branch are
+  then **PR review** and **Repos ▾**. With repo tabs switched off, the repo and current branch are
   shown instead.
-- **Sidebar on the left - the views:** **Git** (Ctrl+1), **Claude agent** (Ctrl+2), **Explorer**
-  (Ctrl+3), **Terminal** (Ctrl+4), **Issues** (Ctrl+5) and **Worktrees** (Ctrl+6), shown as soon
-  as a repository is open, and under a line **⚙ Settings** (click it again to close Settings).
-  **« Collapse** at the bottom shrinks the sidebar to its icons, **»** brings the names back; the
-  choice is remembered. Views you never use can be switched off in **Settings -> Various**.
-- **Action row** above the view: **the buttons of the view you are in** - always in the same
-  spot, with the view's **+** button (+ Claude, + Terminal, + New issue, + New worktree) last.
+- **Second row - the views:** **Git** (Ctrl+1), **Claude agent** (Ctrl+2), **Explorer** (Ctrl+3),
+  **Terminal** (Ctrl+4), **Issues** (Ctrl+5) and **Worktrees** (Ctrl+6) on the left, then after a
+  line **⚙ Settings** (click it again to close Settings), and on the right **the buttons of the
+  view you are in** - always in the same spot, with the view's **+** button (+ Claude,
+  + Terminal, + New issue, + New worktree) last. In a narrow window the other views show only
+  their icon. Views you never use can be switched off in **Settings -> Various**.
 - **Git view buttons:** **🔍** search (or **Ctrl+F**), **Refresh**, **⟳ fetch**, **pull ▾**,
   **push ▾**, **↺ undo ▾**, and **⇣ pop stash** when there is a stash. The **▾** next to pull and
   push picks what a click on the button does (for push: push, push and set upstream, or force-push
@@ -303,7 +302,7 @@ prompt.
 
 - **+ Terminal** opens a shell (PowerShell on Windows), **+ Claude** opens one that starts
   `claude` straight away. Both open in the repository you have open. The button is the last one on
-  the right of the action row; the sessions are tabs in the row under it, and **✕** on a tab ends
+  the right of the view row; the sessions are tabs in the row under it, and **✕** on a tab ends
   that session.
 - Terminals keep running in the background - on another repo tab, in another view. Only **✕** on
   the tab itself ends a session.
@@ -320,7 +319,7 @@ prompt.
   is selected.
 - A quick click never selects: the pointer has to be held down and dragged a little before a
   selection starts, so a click that lands next to the input box does not overwrite the clipboard.
-- **Quick prompts:** the **Quick prompts** button on the right of the action row opens a menu with your saved prompts (edit them in **Settings -> Claude Prompts**);
+- **Quick prompts:** the **Quick prompts** button on the right of the view row opens a menu with your saved prompts (edit them in **Settings -> Claude Prompts**);
   picking one types the prompt exactly as written and runs it, so a command such as `/resume`
   works as a quick prompt too. The button is off on a new install: switch it on with
   **Show quick prompts** on that settings tab. The Terminal view has its own menu, switched on in
