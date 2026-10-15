@@ -466,7 +466,9 @@ it to read the explanation, or click it to keep it open.
   object), the external editor, the default worktree folder, what gets copied into a new
   worktree, the browser preview and the local site server. The first time a new external editor
   is used, the app asks once whether to start that program.
-- **Various** - theme (System, Dark or Light, applied instantly, terminals included), which views
+- **Various** - theme (System, Dark or Light, applied instantly, terminals included; a new Claude
+  session also gets the light or dark version of your Claude Code theme; a session that was already
+  running keeps its colours, and a banner names those tabs so you can close and reopen them), which views
   and columns are shown, the start view, font sizes per part of the app, and **Export**/**Import**
   of all your settings as one JSON file. **Toolbars, tabs & buttons** also sets the size of every
   button in the app, so they are the same size everywhere.
