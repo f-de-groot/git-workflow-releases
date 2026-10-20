@@ -344,17 +344,11 @@ row opens a session of its own for any pull request URL you paste into it.
   is selected.
 - A quick click never selects: the pointer has to be held down and dragged a little before a
   selection starts, so a click that lands next to the input box does not overwrite the clipboard.
-- **Quick prompts:** the **Quick prompts** button on the right of the view row opens a menu with your saved prompts (edit them in **Settings -> Claude prompts**);
-  picking one types the prompt exactly as written and runs it, so a command such as `/resume`
-  works as a quick prompt too. The button is off on a new install: switch it on with
-  **Show quick prompts** on that settings tab. The Terminal view has its own menu, switched on in
-  **Settings -> Terminal prompts**.
 - **Prompt history:** the **Prompt history** button (Claude view) slides open a column with
   everything you asked that session, numbered and timed, with **Reuse** and **Copy** per line.
   Claude's answers bury your questions otherwise. After a `/resume` the prompts of the session you
   picked up appear above the ones you gave here, under a **Resumed here** line.
-- **Artifacts:** the **Artifacts** button (Claude view), between **Quick prompts** and
-  **Skills**, lists the artifacts Claude published on claude.ai from a Claude Code session
+- **Artifacts:** the **Artifacts** button (Claude view), next to **Skills**, lists the artifacts Claude published on claude.ai from a Claude Code session
   in this repository or one of its worktrees, newest first, with their count on the button. Click
   one to open it: in the Claude desktop app when that is installed, in your browser otherwise.
   With the desktop app installed, **Open in browser** at the end of a row opens it in the browser
@@ -463,8 +457,6 @@ it to read the explanation, or click it to keep it open.
   the check that tells you whether Claude is usable. **Claude Code default** leaves the choice to
   your own Claude Code settings. **Checklist and client presentation** switches the Checklist menu
   on, with the default screenshot sizes and the name and logo your presentations are signed with.
-- **Claude prompts** and **Terminal prompts** - the prompts in the **Quick prompts** menu of each
-  view, and **Show quick prompts** to switch each menu on or off (off on a new install).
 - **Repository** - commit signing (GPG or SSH, with **Test signing** that signs a throwaway
   object), the external editor, the default worktree folder, what gets copied into a new
   worktree, the browser preview and the local site server. The first time a new external editor
