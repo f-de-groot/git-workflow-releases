@@ -280,7 +280,9 @@ branch can only be checked out in one worktree at a time.
 - **Paste a file from the clipboard:** copy a file anywhere (Windows Explorer, a mail, a
   screenshot), click the folder in the tree you want it in, and press **Ctrl+V**. It is copied
   into that folder - a file you click hands it to the folder it sits in, the empty space below the
-  rows is the repository root, and an existing file is never overwritten. Folders cannot be
+  rows is the repository root, and an existing file is never overwritten. That still holds once
+  the clicked file is open in the editor: a copied file goes to the tree, copied text stays a
+  paste into the file. Folders cannot be
   pasted: the clipboard hands over file contents only. A path on the clipboard works just as
   well (**Copy as path** in Windows Explorer, or this tree's own **Copy absolute path**), and
   that one has no size limit.
@@ -403,7 +405,7 @@ what it did. Switch the menu on with **Checklist and client presentation** under
     **Box**, an **Arrow** or a **Number** on it. **Select** a mark and press **Delete** to remove
     it. Marks Claude suggests are dashed until you click **Use Claude's marks**.
   - **Save as PDF…** saves the slides as a PDF where you pick, one slide per page, ready to send.
-    **Open PDF** opens it.
+    **Open PDF** opens it. Or share them online for the client to comment on: see below.
 - **Where it is kept:** in the repository (or worktree) the session works in, under
   `.claude/checklists/`. That folder ignores itself, so nothing of it ever shows up in **git
   status** or a commit, and your own `.gitignore` is not touched.
@@ -411,6 +413,47 @@ what it did. Switch the menu on with **Checklist and client presentation** under
 Your company name and logo are set once under **Settings -> Claude**, **Presentations are
 prepared by**. They are on the cover and on the last slide, where the logo is shown in white on a
 dark background - so a logo in one colour (an SVG is best) works well.
+
+### Sharing a presentation with the client
+
+Instead of sending a PDF, you can put the slides online behind a secret link. The client opens it
+in a browser, clicks **Add comment** and then a spot on a slide, and leaves a comment there; you
+both can reply and resolve. The comments come back into the app.
+
+**Set up a review server once.** A review server is a small PHP folder on a web host: a
+project's acceptance domain, or one domain for all clients. It needs PHP 7.4 or newer and https.
+
+1. **Settings -> Claude -> Review servers -> Add review server.** Give it a name and the address
+   the folder will have, for example `https://acc.client.com/_review/`. Optionally fill in an
+   address that gets a mail when the client comments, and how many days a link may stay online
+   at most.
+2. **Download server files…** writes a folder `_review` with the files and a `config.php` of
+   its own. The admin key the app uses stays in your computer's credential store; the server
+   only gets its fingerprint.
+3. Upload that folder to the host, at the address you entered.
+4. **Test connection.** It warns when the server needs an update, when its data folder can be
+   reached from the web (Apache keeps it closed; for nginx or Caddy see the README in the
+   folder), or when the mail address has not reached the server yet.
+
+Changing the mail address or the number of days means downloading the files again and uploading
+`config.php`. Downloading again keeps the same key, so the shared presentations stay.
+
+**Share a presentation.** In **Presentation for the client**, under **Online for the client**:
+
+- Pick the server, the date the link stops working, and optionally a PIN or password
+  (**Make PIN** makes one), then **Put online**. **Copy link** and send it to the client. Send the
+  PIN separately; it is shown only until you close the dialog and kept nowhere.
+- After a change to the text or the screenshots, **Update** puts the new version on the same
+  link; the comments stay. You can also move the end date, set a new PIN or remove it there.
+- **Delete link…** takes the page and its comments off the server at once. If the server cannot
+  be reached, **Forget here** drops the link from the app only.
+
+**Read and answer the comments.** While a presentation is shared, its comments are on the right
+of the preview, and the same numbered pins are on the slides: click a pin or a comment to open
+it. Reply (as the name under **Presentations are prepared by**), **Resolve** or **Reopen**.
+**Refresh** fetches new ones. **Send to Claude** types the open comments into the Claude session,
+without pressing Enter: read them there first, then press Enter. The **Checklist** button shows
+how many comments are open.
 
 ## Keyboard shortcuts
 
@@ -465,7 +508,10 @@ it to read the explanation, or click it to keep it open.
   session also gets the light or dark version of your Claude Code theme; a session that was already
   running keeps its colours, and a banner names those tabs so you can close and reopen them), which views
   and columns are shown, the start view, font sizes per part of the app, and **Export**/**Import**
-  of all your settings as one JSON file. **Toolbars, tabs & buttons** also sets the size of every
+  of all your settings as one JSON file. Sign-in tokens only go into the file when you tick
+  **Include GitHub and Bitbucket sign-in tokens**, and the app asks once to confirm. An import shows it first when the file
+  would change the command that starts Claude or your external editor, and only takes tokens for
+  the hosting accounts in the file itself. **Toolbars, tabs & buttons** also sets the size of every
   button in the app, so they are the same size everywhere.
 - **About** - version, update check, and a link back to this manual.
 
