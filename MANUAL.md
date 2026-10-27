@@ -131,7 +131,8 @@ the account you signed in with does the authenticating.
 Five columns: **branch and tag labels** (tinted in the lane colour of their branch, local and
 remote merged into one label with a monitor and a cloud icon), the **graph** itself, the
 **message**, the **commit** hash and the **date**. Drag the separators to resize; the widths are
-remembered.
+remembered. A commit with several branches or tags lists them all, one under the other, and its
+row grows to fit them.
 
 - **Click a commit** to open its files and diff over the graph. **All files** shows the whole
   commit; click one file for just that file. **Side by side / Unified** is a switch at the top
