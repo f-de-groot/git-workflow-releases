@@ -79,15 +79,18 @@ Every button has one place, decided by what it works on:
 
 - **Top row - the repository and the app:** the **repository tabs** on the left - every open repo
   is a tab with the project's favicon (or the app icon when it has none) and its checked-out branch
-  next to the name, and they are remembered between sessions. On the right **Repos**, then what
-  belongs to the repository on screen - **Preview** for a website, **Worktree** inside a
-  worktree - and then **PR review** and **Settings** (click it again, or the close button in
+  next to the name, and they are remembered between sessions. On the right **Repos**, then
+  **Worktree** inside a worktree, and then **PR review** and **Settings** (click it again, or the close button in
   Settings, to close it). With repo tabs switched off, the repo and current branch are shown
   instead.
 - **Second row - the views:** **Git** (Ctrl+1), **Claude** (Ctrl+2), **Explorer** (Ctrl+3),
   **Terminal** (Ctrl+4), **Issues** (Ctrl+5) and **Worktrees** (Ctrl+6) on the left, and on the
   right **the buttons of the view you are in** - always in the same spot, with the view's **+**
-  button (**Claude**, **Terminal**, **New issue**, **New worktree**) last. In a narrow window the
+  button (**New issue**, **New worktree**) last and, for a website, the
+  green **Preview** (the local site of the repository or worktree on screen) on the far right in
+  every view. In the Claude view the order is **Artifacts**, **Skills**, **Prompt history**,
+  **Checklist**, **Preview**. In the Claude and Terminal views a new session is the **+** right
+  after the last session tab. In a narrow window the
   other views show only their icon. Views you never use can be switched off in
   **Settings -> General**.
 - **Git view buttons:** search (the magnifier, or **Ctrl+F**), **Refresh**, **Fetch**, **Pull**,
@@ -117,8 +120,8 @@ message has an **Undo** button.
 
 ## Open, clone or create a repository
 
-**Repos** has four entries: **Open repository…** (a folder that is already a repository),
-**Clone repository…**, **Create repository…** (a new repository at GitHub or Bitbucket, with a
+**Repos** has four entries: **Clone repository…**, **Open repository…** (a folder that is
+already a repository), **Create repository…** (a new repository at GitHub or Bitbucket, with a
 **Clone now** button afterwards) and **Initialise a folder…** (`git init` on a folder you already
 have). With no repository open, the Git view offers **Open repository…** and **Clone
 repository…** as well.
@@ -228,7 +231,7 @@ at once without stashing or switching is the point of the whole app.
 - New worktrees can copy the things git does not track but your app needs to run -
   `vendor`, `public/build`, `.env` - from the worktree you came from; the list is in
   **Settings -> Repository -> Copy into a new worktree**.
-- **Preview** in the top row opens the local site of the worktree you are in, at the address
+- **Preview** in the view bar opens the local site of the worktree you are in, at the address
   your local site server actually serves it on. Optionally the app can create and remove that site
   per worktree (**Settings -> Repository -> Local site server**).
 - **Worktree** in the top row, while you are in a worktree, holds the two ways to end it:
