@@ -399,13 +399,21 @@ what it did. Switch the menu on with **Checklist and client presentation** under
 - **Checklist:** Claude publishes an artifact with every change of the session, grouped by subject
   and numbered A1, A2, B1 and so on, each with a checkbox and a line on what to check and where.
   Tick the points off as you go; the artifact keeps them ticked.
-- **Presentation for the client:** fill in the client's name, who it is addressed to (optional) and
-  the language, then **Make the presentation**. The session lists its changes and writes the
+- **Presentation for the client:** fill in the client's name, who it is addressed to (optional; the
+  text is written to them and their name is on the cover), the website for the links (see below)
+  and the language, then **Make the presentation**. The session lists its changes and writes the
   slides, in plain words without code or jargon, and the app takes screenshots of the pages where
   the changes can be seen. The slides are in the website's house style: the logo, support colour
   and font are looked up in the project, and the logo and colour can be changed in the dialog.
-  - **Edit text and screenshots** lets you correct the text per slide before it goes out, and add,
-    replace or mark the screenshot of each change. **Add screenshot** captures a page with the Edge
+  - **Edit text and screenshots** lets you change every word on the slides before it goes out -
+    the text Claude wrote, but also the headings, the labels on the cover, the date, the figures
+    next to the summary, the column headings and the pages listed under a change - and add,
+    replace or mark the screenshot of each change.
+  - **Website for the links:** the pages listed under a change link to the site the changes were
+    checked on - often a test server the client cannot reach. Fill in the site where the client
+    looks instead, such as the acceptance or production site, and every link moves there. The
+    app remembers it per repository. The links are clickable, in the PDF and in the shared
+    presentation alike. **Add screenshot** captures a page with the Edge
     or Chrome on your computer (desktop 1440x900 and/or mobile 390x844 - pick the defaults in
     Settings), or takes an image you paste (**Ctrl+V**) or drop. The capture only opens the page;
     it cannot log in or click.
@@ -419,8 +427,8 @@ what it did. Switch the menu on with **Checklist and client presentation** under
   status** or a commit, and your own `.gitignore` is not touched.
 
 Your company name and logo are set once under **Settings -> Claude**, **Presentations are
-prepared by**. They are on the cover and on the last slide, where the logo is shown in white on a
-dark background - so a logo in one colour (an SVG is best) works well.
+prepared by**. They are in the dark band on the cover, where the logo is shown in white - so a
+logo in one colour (an SVG is best) works well.
 
 ### Sharing a presentation with the client
 
