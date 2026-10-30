@@ -114,7 +114,8 @@ which would end every running session.
 
 **Dialogs** all work the same way: **Esc** or a click beside the dialog cancels it, the main
 action is the blue button on the right, and a dialog in which you typed something asks before it
-throws that away. While a dialog is busy (cloning, saving) it stays open until it is done.
+throws that away. While a dialog is busy (saving, for instance) it stays open until it is done;
+the clone dialog is the exception, see below.
 Messages appear at the top right, below any open dialog; after deleting a branch or a stash the
 message has an **Undo** button.
 
@@ -126,8 +127,11 @@ already a repository), **Create repository…** (a new repository at GitHub or B
 have). With no repository open, the Git view offers **Open repository…** and **Clone
 repository…** as well.
 
-Cloning shows git's own progress and opens the clone when it is done. Prefer the HTTPS URL: then
-the account you signed in with does the authenticating.
+Cloning shows git's own progress and opens the clone when it is done. A large repository can take
+a while: **Run in background** (or **Esc**) closes the dialog and lets the clone carry on, with its
+progress in the status bar at the bottom. When it is done, the repository appears as a new tab -
+or opens straight away if no repository was open. Keep the app open until then; closing it stops
+the clone. **Cancel** stops the clone instead and deletes the folder it was filling. Prefer the HTTPS URL: then the account you signed in with does the authenticating.
 
 ## The commit graph
 
