@@ -401,10 +401,23 @@ what it did. Switch the menu on with **Checklist and client presentation** under
   Tick the points off as you go; the artifact keeps them ticked.
 - **Presentation for the client:** fill in the client's name, who it is addressed to (optional; the
   text is written to them and their name is on the cover), the website for the links (see below)
-  and the language, then **Make the presentation**. The session lists its changes and writes the
-  slides, in plain words without code or jargon, and the app takes screenshots of the pages where
-  the changes can be seen. The slides are in the website's house style: the logo, support colour
-  and font are looked up in the project, and the logo and colour can be changed in the dialog.
+  and the language. Then choose **what it is about**:
+  - **This Claude session** - the files this session changed, committed or not. The dialog shows
+    how many, and the list itself under **Show the files**. Not available when the session has
+    not changed anything in this repository (a new session, or one after `/clear`).
+  - **A branch** - the work on a branch since it left another one: pick the branch and the branch
+    it started from. The app suggests the closest starting point, but not on `main` itself, where
+    there is none. Uncommitted changes count when the branch is the one checked out.
+  - **The whole website** - not a set of changes, but the site itself. Answer **What should it
+    show?** (a tour of the main pages, or what the website can do), fill in its address and how
+    many pages it may cover at most. This takes longer: Claude goes through the site.
+
+  When the choice is clear, the app picks it for you; otherwise **Make the presentation** stays
+  off until you choose. **Anything to stress or leave out** passes a note to Claude with the
+  subject. The session then lists what the subject holds and writes the slides, in plain words
+  without code or jargon, and the app takes screenshots of the pages where it can be seen. The
+  slides are in the website's house style: the logo, support colour and font are looked up in
+  the project, and the logo and colour can be changed in the dialog.
   - **Edit text and screenshots** lets you change every word on the slides before it goes out -
     the text Claude wrote, but also the headings, the labels on the cover, the date, the figures
     next to the summary, the column headings and the pages listed under a change - and add,
