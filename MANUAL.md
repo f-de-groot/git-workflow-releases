@@ -24,8 +24,8 @@ is private, so there is no issue tracker you can reach.
    **More info -> Run anyway**.
 3. It installs per user, so no administrator rights are needed.
 
-The `.msi` next to it is the same app for managed deployment (Intune/GPO); the `.sig` files and
-`latest.json` are for the updater and not something you download by hand.
+The `.msi` next to it is the same app for managed deployment (Intune/GPO); `latest.json` is for
+the updater and not something you download by hand.
 
 > On a machine with **Smart App Control** switched on, Windows blocks unsigned installers
 > outright instead of warning. Until signing is in place, GitWorkflow cannot be installed there.
@@ -34,8 +34,9 @@ The `.msi` next to it is the same app for managed deployment (Intune/GPO); the `
 
 GitWorkflow checks for a new version on startup and installs it itself; every update is signed
 and verified before it is applied. You can also check from **Settings -> About -> Check for
-updates**, and switch the startup check off in the same place. There is no need to come back to
-the releases page after the first install.
+updates**, and switch the startup check off in the same place. The update dialog lists what
+changed in the new version; the releases page has the same notes, with those of earlier versions
+below them. There is no need to come back to the releases page after the first install.
 
 ## What you need on your machine
 
