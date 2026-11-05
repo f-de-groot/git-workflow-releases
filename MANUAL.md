@@ -87,9 +87,10 @@ Every button has one place, decided by what it works on:
 - **Second row - the views:** **Git** (Ctrl+1), **Claude** (Ctrl+2), **Explorer** (Ctrl+3),
   **Terminal** (Ctrl+4), **Issues** (Ctrl+5) and **Worktrees** (Ctrl+6) on the left, and on the
   right **the buttons of the view you are in** - always in the same spot, with the view's **+**
-  button (**New issue**, **New worktree**) last and, for a website, the
-  green **Preview** (the local site of the repository or worktree on screen) on the far right in
-  every view. In the Claude view the order is **Artifacts**, **Skills**, **Prompt history**,
+  button (**New issue**, **New worktree**) last and, for a website,
+  **Preview** (the local site of the repository or worktree on screen) on the far right in
+  every view, with a green dot when the local web server serves it. The view you are in is
+  the blue one. In the Claude view the order is **Artifacts**, **Skills**, **Prompt history**,
   **Checklist**, **Preview**. In the Claude and Terminal views a new session is the **+** right
   after the last session tab. In a narrow window the
   other views show only their icon. Views you never use can be switched off in
@@ -98,7 +99,9 @@ Every button has one place, decided by what it works on:
   **Push**, **Undo**, and **Pop stash** when there is a stash. The arrow next to Pull and Push picks
   what a click on the button does (for Push: push, push and set upstream, or force push with
   lease), and the choice is remembered. With Pull set to fetch, the separate Fetch button goes
-  away. A force push always asks first, and the button then reads **Force push** in red. While
+  away. **Push** shows how many commits it would send, and so does the repo tab next to the
+  branch name (as of the last fetch). A force push always asks first, and the button then
+  reads **Force push** in red. While
   the graph is filtered, a yellow **Only 'X'** or **N branches hidden** button in front of them
   shows everything again.
 - **Sidebar** (Git view): local and remote branches, pull requests, tags and stashes.
@@ -343,7 +346,7 @@ row opens a session of its own for any pull request URL you paste into it.
 - Terminals keep running in the background - on another repo tab, in another view. Only closing
   the tab itself ends a session.
 - **What Claude is doing** shows as a dot after the title of its tab: coral and pulsing while
-  Claude works, yellow while it waits for your answer (a permission question, say), and green for
+  Claude works, a yellow ring while it waits for your answer (a permission question, say), and green for
   an answer that finished while you were looking elsewhere - until you look at that tab. Hover the
   tab to read it in words. When Claude waits for you or finishes while the window is not in front,
   or while you are in another tab, view or repository, Windows shows a notification; click it to
@@ -353,6 +356,11 @@ row opens a session of its own for any pull request URL you paste into it.
   Because of that **Ctrl+C is the interrupt again**, even with text selected. **Ctrl+Shift+C**
   copies explicitly, **Ctrl+V** and **Ctrl+Shift+V** paste, and right-click pastes when nothing
   is selected.
+- **An image on the clipboard** (a screenshot, say) pastes into a Claude session with
+  **Ctrl+V** or a right-click: it is saved as a file and its path goes into the prompt, which
+  Claude attaches - the same as dropping the file on the terminal.
+- **A new line in Claude's input box** is **Ctrl+Enter** or **Shift+Enter** (Alt+Enter works
+  too); a plain **Enter** sends the prompt.
 - A quick click never selects: the pointer has to be held down and dragged a little before a
   selection starts, so a click that lands next to the input box does not overwrite the clipboard.
 - **Prompt history:** the **Prompt history** button (Claude view) slides open a column with
@@ -495,7 +503,8 @@ how many comments are open.
 | **Ctrl+P** | Command palette: fetch, pull, push, stash, check out any branch, switch repo tab, open a worktree, settings, a new terminal |
 | **Ctrl+C** | Interrupt what the terminal is running |
 | **Ctrl+Shift+C** | Copy the terminal selection (selecting already copies it) |
-| **Ctrl+V** | Paste into the terminal, or a copied file into the Explorer tree |
+| **Ctrl+V** | Paste into the terminal (an image too, in a Claude session), or a copied file into the Explorer tree |
+| **Ctrl+Enter**, **Shift+Enter** | A new line in Claude's input box instead of sending the prompt |
 | **Ctrl+S** | Save the file you are editing in the Explorer now |
 | **Left Shift twice**, **Ctrl+Shift+N** | Go to any file in the project by name; twice again includes ignored files and dependencies (Explorer) |
 | **Right Shift twice**, **Ctrl+Shift+F** | Search file names and the contents of every file (Explorer) |
