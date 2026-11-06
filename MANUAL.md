@@ -345,14 +345,39 @@ row opens a session of its own for any pull request URL you paste into it.
   button on a tab ends that session.
 - Terminals keep running in the background - on another repo tab, in another view. Only closing
   the tab itself ends a session.
-- **What Claude is doing** shows as a dot after the title of its tab: coral and pulsing while
+- **A Claude session opens in GitWorkflow Chat.** The app shows your prompts, Claude's answers and
+  the files it changed, instead of Claude Code's own terminal interface (**Claude Terminal**).
+  **Show in Claude Terminal** in the view row
+  continues the same conversation in that interface (for what only it can do, such as approving a
+  tool or its own pickers); **Show in GitWorkflow Chat** brings it back, with the earlier turns read back and a
+  **Continued here** line where you pick up. To open new sessions as a terminal again, set
+  **Settings → Claude → Open as** to **Claude Terminal**.
+- **How much of Claude's work you see** in a chat: **Everything** (every step), **Compact** (one line
+  per answer, such as "Read 3 files, ran 2 commands", that opens to the steps) or **Answers only**
+  (just the answers). Set the default in **Settings → Claude → Chat shows**, or switch it for
+  one chat in the view row. Under every answer that changed files there is a **Changed N files**
+  card: click a file to see its diff, or open it in the Explorer. Changes Claude made through a
+  shell command (rather than its edit tools) are not in that card.
+- **The input field of a chat:** **Enter** sends, **Shift+Enter** or **Ctrl+Enter** is a new line,
+  **Up** brings back an earlier prompt. Paste, drop or add an image to show Claude something.
+  Type **/** at the start for commands and skills, **@** for a file of the repository; arrows and
+  **Enter** or **Tab** pick one. While Claude works you can already type the next prompt: it waits
+  in line. **Esc** (or **Stop**) ends the answer; prompts still waiting go back into the field. The
+  model is shown under the field and can be switched there; **/clear** starts a new conversation
+  in the same tab.
+- **In a folder Claude Code does not trust yet,** a chat first asks whether you trust its files,
+  because Claude then runs that folder's tools and hooks. **Open in Claude Terminal** asks Claude Code's
+  own question instead.
+- **Tools that need your approval** are refused in a chat when your Claude command does not skip
+  permissions (the default command does); the chat says so. Use **Show in Claude Terminal** to approve
+  them there.- **What Claude is doing** shows as a dot after the title of its tab: coral and pulsing while
   Claude works, a yellow ring while it waits for your answer (a permission question, say), and green for
   an answer that finished while you were looking elsewhere - until you look at that tab. Hover the
   tab to read it in words. When Claude waits for you or finishes while the window is not in front,
   or while you are in another tab, view or repository, Windows shows a notification; click it to
   go straight to that session. A session that was already running before you updated the app
   shows its dot from the next session on.
-- **Selected text is copied to the clipboard immediately**, so selecting is all it takes.
+- **In a terminal**, selected text is copied to the clipboard immediately, so selecting is all it takes.
   Because of that **Ctrl+C is the interrupt again**, even with text selected. **Ctrl+Shift+C**
   copies explicitly, **Ctrl+V** and **Ctrl+Shift+V** paste, and right-click pastes when nothing
   is selected.
@@ -534,7 +559,7 @@ it to read the explanation, or click it to keep it open.
 
 - **Workspace** - identities and their GitHub/Bitbucket accounts, and the SSH key per provider.
 - **Claude** - **Use Claude** on or off, the model and effort a new Claude session starts
-  with, the model and effort for resolving conflicts, the model that writes commit messages, the
+  with, whether it opens in GitWorkflow Chat or Claude Terminal and how much of Claude's work a chat shows, the model and effort for resolving conflicts, the model that writes commit messages, the
   command a new Claude session runs, and
   the check that tells you whether Claude is usable. **Claude Code default** leaves the choice to
   your own Claude Code settings. **Checklist and client presentation** switches the Checklist menu
