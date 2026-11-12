@@ -345,32 +345,56 @@ row opens a session of its own for any pull request URL you paste into it.
   button on a tab ends that session.
 - Terminals keep running in the background - on another repo tab, in another view. Only closing
   the tab itself ends a session.
-- **A Claude session opens in GitWorkflow Chat.** The app shows your prompts, Claude's answers and
-  the files it changed, instead of Claude Code's own terminal interface (**Claude Terminal**).
-  **Show in Claude Terminal** in the view row
-  continues the same conversation in that interface (for what only it can do, such as approving a
-  tool or its own pickers); **Show in GitWorkflow Chat** brings it back, with the earlier turns read back and a
-  **Continued here** line where you pick up. To open new sessions as a terminal again, set
-  **Settings → Claude → Open as** to **Claude Terminal**.
-- **How much of Claude's work you see** in a chat: **Everything** (every step), **Compact** (one line
-  per answer, such as "Read 3 files, ran 2 commands", that opens to the steps) or **Answers only**
-  (just the answers). Set the default in **Settings → Claude → Chat shows**, or switch it for
+- **A Claude session opens in Claude Terminal**, Claude Code's own interface. **Show in GitWorkflow
+  Chat** in the view row continues the same conversation as a chat the app draws: your prompts,
+  Claude's answers and the files it changed. **Show in Claude Terminal** brings it back, and the
+  chat picks up again with the earlier turns read back and a **Continued here** line. To open new
+  sessions as a chat, set **Settings → Claude → Open as** to **GitWorkflow Chat**.
+- **How much of Claude's work you see** in a chat: **Everything** (every step), **Compact** (the steps
+  fold into lines such as "Read 3 files, ran 2 commands" that open to them, while everything Claude
+  writes stays in sight) or **Answers only** (the answers, including what Claude replied to a
+  prompt you sent while it worked). Set the default in **Settings → Claude → Chat shows**, or switch it for
   one chat in the view row. Under every answer that changed files there is a **Changed N files**
   card: click a file to see its diff, or open it in the Explorer. Changes Claude made through a
   shell command (rather than its edit tools) are not in that card.
 - **The input field of a chat:** **Enter** sends, **Shift+Enter** or **Ctrl+Enter** is a new line,
-  **Up** brings back an earlier prompt. Paste, drop or add an image to show Claude something.
+  **Up** brings back an earlier prompt. Paste (a screenshot works too), drop or add an image to
+  show Claude something.
   Type **/** at the start for commands and skills, **@** for a file of the repository; arrows and
   **Enter** or **Tab** pick one. While Claude works you can already type the next prompt: it waits
-  in line. **Esc** (or **Stop**) ends the answer; prompts still waiting go back into the field. The
+  in line until Claude's next step, and Claude then takes it into the answer it is working on. It
+  shows as *Added while Claude worked* at the point Claude took it in, with Claude's reply to it
+  right below. If Claude has no step left, it
+  answers it separately afterwards. **Esc** (or **Stop**) ends the answer; prompts still waiting go back into the field. The
   model is shown under the field and can be switched there; **/clear** starts a new conversation
   in the same tab.
+- **Every / command of Claude Code works in a chat.** Type **/** to see them all; **/help** lists
+  them by where they run. Most run in the chat itself. **/resume** (pick up an earlier
+  conversation in this folder), **/status**, **/memory** (open the CLAUDE.md files), **/export**
+  (copy or save the conversation as Markdown) and **/add-dir** (let Claude work in another folder
+  too) are done by the app. The few that only Claude Code's own interface has, such as
+  **/permissions**, **/hooks**, **/rewind** and **/login**, are marked *Claude Terminal*: they
+  switch the tab to Claude Terminal on the same conversation and run there. Commands marked *uses
+  your limits* (such as **/doctor** and **/init**) let Claude do the work, like a prompt.
+- **The answer stands out:** once Claude has finished, the answer (what it wrote after its last
+  step) sits on a soft green background.
+- **Whether Claude is done** shows in one line above the input field: *Claude is working* (with
+  how long, and **Stop**), *Still running in the background* when the answer is in but a command
+  or subagent Claude started in the background is still going (Claude continues by itself when it
+  finishes), and a green **Done** once nothing is left. The dot on the tab and the "Claude has
+  finished" notification wait for that same moment.
+- **How large the conversation is** shows under the field ("42k context"). Every step sends the
+  whole conversation to Claude again, so a long one uses up your Claude limits faster even when
+  the prompts are short. From 150k it turns amber, from 400k red, and **Compact** (a summary
+  replaces the conversation) and **New conversation** appear beside it. Starting a new task in a
+  new conversation is the cheapest habit.
 - **In a folder Claude Code does not trust yet,** a chat first asks whether you trust its files,
   because Claude then runs that folder's tools and hooks. **Open in Claude Terminal** asks Claude Code's
   own question instead.
 - **Tools that need your approval** are refused in a chat when your Claude command does not skip
   permissions (the default command does); the chat says so. Use **Show in Claude Terminal** to approve
-  them there.- **What Claude is doing** shows as a dot after the title of its tab: coral and pulsing while
+  them there.
+- **What Claude is doing** shows as a dot after the title of its tab: coral and pulsing while
   Claude works, a yellow ring while it waits for your answer (a permission question, say), and green for
   an answer that finished while you were looking elsewhere - until you look at that tab. Hover the
   tab to read it in words. When Claude waits for you or finishes while the window is not in front,
