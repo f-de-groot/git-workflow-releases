@@ -90,8 +90,8 @@ Every button has one place, decided by what it works on:
   button (**New issue**, **New worktree**) last and, for a website,
   **Preview** (the local site of the repository or worktree on screen) on the far right in
   every view, with a green dot when the local web server serves it. The view you are in is
-  the blue one. In the Claude view the order is **Artifacts**, **Skills**, **Prompt history**,
-  **Checklist**, **Preview**. In the Claude and Terminal views a new session is the **+** right
+  the blue one. In the Claude view the order is **Tasks** (a chat) or **Prompt history** (Claude
+  Terminal), **Artifacts**, **Skills**, **Checklist**, **Preview**. In the Claude and Terminal views a new session is the **+** right
   after the last session tab. In a narrow window the
   other views show only their icon. Views you never use can be switched off in
   **Settings -> General**.
@@ -357,17 +357,44 @@ row opens a session of its own for any pull request URL you paste into it.
   one chat in the view row. Under every answer that changed files there is a **Changed N files**
   card: click a file to see its diff, or open it in the Explorer. Changes Claude made through a
   shell command (rather than its edit tools) are not in that card.
-- **The input field of a chat:** **Enter** sends, **Shift+Enter** or **Ctrl+Enter** is a new line,
-  **Up** brings back an earlier prompt. Paste (a screenshot works too), drop or add an image to
-  show Claude something.
-  Type **/** at the start for commands and skills, **@** for a file of the repository; arrows and
-  **Enter** or **Tab** pick one. While Claude works you can already type the next prompt: it waits
-  in line until Claude's next step, and Claude then takes it into the answer it is working on. It
-  shows as *Added while Claude worked* at the point Claude took it in, with Claude's reply to it
-  right below. If Claude has no step left, it
-  answers it separately afterwards. **Esc** (or **Stop**) ends the answer; prompts still waiting go back into the field. The
+- **Every prompt in a chat is a task.** **Enter** adds it to the queue of that chat, and Claude
+  takes the tasks one after the other: the next starts by itself once Claude is done. **Alt+Enter**
+  adds the prompt to the task Claude is working on instead: Claude takes it in at its next step and
+  answers it in the same reply, where it shows as *Added while Claude worked*. **Shift+Enter** or
+  **Ctrl+Enter** is a new line, **Up** brings back an earlier prompt. Paste (a screenshot works
+  too), drop or add an image to show Claude something; it goes along with its task. Type **/** at
+  the start for commands and skills (those run at once and are no task), **@** for a file of the
+  repository; arrows and **Enter** or **Tab** pick one. **Esc** (or **Stop**) ends the answer. The
   model is shown under the field and can be switched there; **/clear** starts a new conversation
   in the same tab.
+- **Tasks:** the **Tasks** button (in a chat) opens a column with every task of the repository.
+  The colour says where each one stands: amber waits (with its place in line), blue is being worked
+  on (with a clock), green is done, red stopped or failed and needs a look. Click a task to jump to
+  it in the chat, to the green answer once it is done. When the chat no longer has it (you closed
+  the tab, restarted the app or continued the session elsewhere), the answer the app kept when the
+  task ended opens in a window, with **Copy answer** and **Review changes**. Per task you can change it (while Claude
+  works, Claude gets the new version at its next step), move it up or down, cancel it, run it again,
+  or **Reuse** and **Copy** its text; a search field finds older ones. A task shows the branch it
+  ran on and the tokens it used (hover for how they split up). Above the input field a line says how
+  many tasks wait, also with the column closed.
+- **What a task changed:** when a task ends, its card says "3 files, +20 -4" with **Review**: the
+  files it changed and their diffs, also when other uncommitted work was already there. **Accept**,
+  **Ask for changes** (a new task, first in line) or **Undo these changes** (the files go back to how
+  they were before the task; files it created are deleted). Undo is all or nothing: when a file
+  changed after the task, nothing is undone and the message says which files.
+- **Cancelling a task** Claude is working on stops Claude; when it already changed files, you
+  choose **Keep changes**, **Undo changes** or **Review first**. After a task that stopped,
+  failed or was cancelled, the tasks behind it wait until you **Resume**, so nothing builds on
+  half-done work unasked. With no task waiting, you just type on.
+- **A branch per task:** the branch menu under the input field picks where the next task starts:
+  the current branch (the default), a new branch (with a name suggested from the task) or an
+  existing one. Uncommitted work comes along to a new branch. A waiting task's card has the same
+  menu.
+- **Running agents:** while Claude works, a line above the input field shows the subagents still
+  running, each with its type, what it was asked and how long it has run.
+- **Hints:** with Opus or Fable while your 5-hour or weekly limit is at 70% or more, the chat
+  offers **Switch to Sonnet**. With a large conversation (150k tokens or more) while you type a
+  new task, it offers **Compact first** or **New conversation** for that task.
 - **Every / command of Claude Code works in a chat.** Type **/** to see them all; **/help** lists
   them by where they run. Most run in the chat itself. **/resume** (pick up an earlier
   conversation in this folder), **/status**, **/memory** (open the CLAUDE.md files), **/export**
@@ -412,7 +439,7 @@ row opens a session of its own for any pull request URL you paste into it.
   too); a plain **Enter** sends the prompt.
 - A quick click never selects: the pointer has to be held down and dragged a little before a
   selection starts, so a click that lands next to the input box does not overwrite the clipboard.
-- **Prompt history:** the **Prompt history** button (Claude view) slides open a column with
+- **Prompt history:** the **Prompt history** button (Claude Terminal) slides open a column with
   everything you asked that session, numbered and timed, with **Reuse** and **Copy** per line.
   Claude's answers bury your questions otherwise. After a `/resume` the prompts of the session you
   picked up appear above the ones you gave here, under a **Resumed here** line.
