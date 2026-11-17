@@ -79,8 +79,8 @@ switched over with **right-click the remote -> Switch to HTTPS**.
 Every button has one place, decided by what it works on:
 
 - **Top row - the repository and the app:** the **repository tabs** on the left - every open repo
-  is a tab with the project's favicon (or the app icon when it has none) and its checked-out branch
-  next to the name, and they are remembered between sessions. On the right **Repos**, then
+  is a tab with the project's favicon (or the app icon when it has none) and its name, plus the
+  number of commits a push would send on the open one, and they are remembered between sessions. On the right **Repos**, then
   **Worktree** inside a worktree, and then **PR review** and **Settings** (click it again, or the close button in
   Settings, to close it). With repo tabs switched off, the repo and current branch are shown
   instead.
@@ -360,14 +360,22 @@ row opens a session of its own for any pull request URL you paste into it.
 - **Every prompt in a chat is a task.** **Enter** adds it to the queue of that chat, and Claude
   takes the tasks one after the other: the next starts by itself once Claude is done. **Alt+Enter**
   adds the prompt to the task Claude is working on instead: Claude takes it in at its next step and
-  answers it in the same reply, where it shows as *Added while Claude worked*. **Shift+Enter** or
+  answers it in the same reply, where it shows as *Added while Claude worked*. When Claude has
+  answered but still runs something in the background (a dev server, a watcher), **Enter** does the
+  same: the input then says *Reply to Claude*, and your reply goes into that task at once instead of
+  waiting behind it. Pick a branch under the input to make it a new task anyway. **Shift+Enter** or
   **Ctrl+Enter** is a new line, **Up** brings back an earlier prompt. Paste (a screenshot works
   too), drop or add an image to show Claude something; it goes along with its task. Type **/** at
   the start for commands and skills (those run at once and are no task), **@** for a file of the
-  repository; arrows and **Enter** or **Tab** pick one. **Esc** (or **Stop**) ends the answer. The
-  model is shown under the field and can be switched there; **/clear** starts a new conversation
-  in the same tab.
-- **Tasks:** the **Tasks** button (in a chat) opens a column with every task of the repository.
+  repository; arrows pick one, **Enter** runs a command at once and **Tab** fills it in to add
+  something after it. **Esc** (or **Stop**) ends the answer. The model is shown under the field and
+  can be switched there; **New conversation** under the field (or **/clear**) starts a new
+  conversation in the same tab.
+- **Tasks:** the **Tasks** button (in a chat) opens a column with the tasks of the conversation in
+  that chat; **All chats** shows every task of the repository. After **/resume** the tasks of the
+  conversation you picked come back, and its prompts that were never a task (typed in Claude Terminal,
+  or before tasks existed) are listed under *Earlier in this conversation*. The bin takes a card off
+  the list only: the conversation keeps the prompt, and **Show removed** brings it back.
   The colour says where each one stands: amber waits (with its place in line), blue is being worked
   on (with a clock), green is done, red stopped or failed and needs a look. Click a task to jump to
   it in the chat, to the green answer once it is done. When the chat no longer has it (you closed
@@ -398,8 +406,11 @@ row opens a session of its own for any pull request URL you paste into it.
 - **Every / command of Claude Code works in a chat.** Type **/** to see them all; **/help** lists
   them by where they run. Most run in the chat itself. **/resume** (pick up an earlier
   conversation in this folder), **/status**, **/memory** (open the CLAUDE.md files), **/export**
-  (copy or save the conversation as Markdown) and **/add-dir** (let Claude work in another folder
-  too) are done by the app. The few that only Claude Code's own interface has, such as
+  (copy or save the conversation as Markdown), **/add-dir** (let Claude work in another folder
+  too), **/plan** and **/exit** are done by the app. **/plan** switches plan mode on: Claude looks
+  around and proposes a plan, and changes nothing until you type **/plan** again or click **Plan
+  mode** by the input; **/plan add a login page** switches it on and asks for that plan at once.
+  **/exit** (or **/quit**) closes the tab and ends its Claude session. The few that only Claude Code's own interface has, such as
   **/permissions**, **/hooks**, **/rewind** and **/login**, are marked *Claude Terminal*: they
   switch the tab to Claude Terminal on the same conversation and run there. Commands marked *uses
   your limits* (such as **/doctor** and **/init**) let Claude do the work, like a prompt.
