@@ -374,18 +374,22 @@ row opens a session of its own for any pull request URL you paste into it.
 - **Tasks:** the **Tasks** button (in a chat) opens a column with the tasks of the conversation in
   that chat; **All chats** shows every task of the repository. After **/resume** the tasks of the
   conversation you picked come back, and its prompts that were never a task (typed in Claude Terminal,
-  or before tasks existed) are listed under *Earlier in this conversation*. The bin takes a card off
-  the list only: the conversation keeps the prompt, and **Show removed** brings it back.
-  The colour says where each one stands: amber waits (with its place in line), blue is being worked
-  on (with a clock), green is done, red stopped or failed and needs a look. Click a task to jump to
-  it in the chat, to the green answer once it is done. When the chat no longer has it (you closed
-  the tab, restarted the app or continued the session elsewhere), the answer the app kept when the
-  task ended opens in a window, with **Copy answer** and **Review changes**. Per task you can change it (while Claude
-  works, Claude gets the new version at its next step), move it up or down, cancel it, run it again,
-  or **Reuse** and **Copy** its text; a search field finds older ones. A task shows the branch it
-  ran on and the tokens it used (hover for how they split up). Above the input field a line says how
-  many tasks wait, also with the column closed.
-- **What a task changed:** when a task ends, its card says "3 files, +20 -4" with **Review**: the
+  or before tasks existed) are listed under *Earlier in this conversation*. The bin takes a prompt off
+  the list only: the conversation keeps it, and **Show removed** brings it back.
+  The column has sections: *Now* (the blue card of the task Claude is on, with a clock), *Up next*
+  (the waiting tasks, with their place in line), *Needs a look* (stopped or failed, red frame, with
+  **Run again**) and *Done*, one row per task with what it changed on the right. Click a task to
+  jump to it in the chat, to the green answer once it is done. When the chat no longer has it (you
+  closed the tab, restarted the app or continued the session elsewhere), the answer the app kept
+  when the task ended opens in a window, with **Copy answer** and **Review changes**. A long prompt
+  shows its first lines; **Show all** under it shows the whole text (and, on a done row, the
+  details). **Drag** a waiting task to change its place in line, or press **Alt+Up** / **Alt+Down**
+  on it. Per task you can change it (while Claude works, Claude gets the new version at its next
+  step), cancel it, run it again, or **Reuse** and **Copy** its text; these buttons show when you
+  point at a task. The magnifier finds older ones. A task shows the branch it ran on and the tokens
+  it used (hover for how they split up). Above the input field a line says how many tasks wait,
+  also with the column closed.
+- **What a task changed:** when a task ends, its row says "3 files" and "+20 -4" with **Review**: the
   files it changed and their diffs, also when other uncommitted work was already there. **Accept**,
   **Ask for changes** (a new task, first in line) or **Undo these changes** (the files go back to how
   they were before the task; files it created are deleted). Undo is all or nothing: when a file
