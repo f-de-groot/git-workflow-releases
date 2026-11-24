@@ -471,7 +471,7 @@ until you open it.
   new task, it offers **Compact first** or **New conversation** for that task.
 - **Every / command of Claude Code works in a chat.** Type **/** to see them all; **/help** lists
   them by where they run. Most run in the chat itself. **/resume** (pick up an earlier
-  conversation in this folder), **/status**, **/memory** (open the CLAUDE.md files), **/export**
+  conversation in this folder, listed by the name you gave it with **/rename**), **/status**, **/memory** (open the CLAUDE.md files), **/export**
   (copy or save the conversation as Markdown), **/add-dir** (let Claude work in another folder
   too), **/plan** and **/exit** are done by the app. **/plan** switches plan mode on: Claude looks
   around and proposes a plan, and changes nothing until you type **/plan** again or click **Plan
