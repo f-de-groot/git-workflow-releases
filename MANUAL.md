@@ -285,19 +285,73 @@ branch can only be checked out in one worktree at a time.
   comments already (`//`, `#`, `--` or `<!-- -->`, depending on the file type). **Ctrl+D**
   duplicates the line, or the selection when there is one. **Alt+Shift+Up/Down** moves the
   selected lines up or down.
-- **Right-click a file or folder** for new file, new folder, rename, copy path, **Show in File
-  Explorer**, file history or blame, and last **Delete** (to the Recycle Bin, so it can be restored).
-  **Drag a row onto a folder** to move it. The buttons above the tree make a new file or folder and
-  show or hide the folders git ignores.
-- **Paste a file from the clipboard:** copy a file anywhere (Windows Explorer, a mail, a
-  screenshot), click the folder in the tree you want it in, and press **Ctrl+V**. It is copied
+- **More carets and blocks:** **Alt+Shift+click** adds a caret, so you can type in several places
+  at once; **Alt+drag** selects a column. **Esc** goes back to one caret. **Enter** indents the
+  new line the way the language expects, **Tab** and **Shift+Tab** indent and unindent the
+  selected lines, and the bracket that belongs to the one at the caret is marked.
+- **Completion, usages and problems.** PHP, TypeScript and JavaScript (with JSX), CSS, SCSS,
+  Less, HTML and JSON files get a language server: Intelephense for PHP, the TypeScript
+  language server for TypeScript and JavaScript, and one package for CSS, HTML and JSON.
+  The first time, the bottom right of the editor offers **Install**: that downloads it from npm
+  into the app's own data folder (Node.js has to be installed). The TypeScript server always
+  runs that TypeScript, never a copy a project brings along in its `node_modules`, so opening a
+  file in a cloned repository never runs code from it. After that it starts by itself
+  for every repository, reads the project once (the status says so while it does), and then:
+  - suggestions appear while you type (**Ctrl+Space** asks for them); **Enter** or **Tab** takes
+    one, **Esc** closes the list;
+  - hovering over a class, function or variable shows its signature and doc comment, and the
+    parameters of a call show while you type them;
+  - **Ctrl+click** and **Ctrl+B** jump to the definition through the language server, into
+    `vendor/` and `node_modules/` too; when it has no answer, the app's own search takes over as
+    before;
+  - **Alt+F7** (or **Shift+F12**) finds the usages of what the caret is on: one goes there
+    directly, more open a list;
+  - errors and warnings get a wavy line; hover over it for the message. For PHP these are
+    syntax errors; TypeScript also gets type errors, CSS unknown properties;
+  - **Shift+F6** renames what the caret is on - a variable, function, method, class or CSS
+    class - in every file that uses it. Type the new name and press **Enter**. When other files
+    change as well, the app first says how many; files that are not open are written to disk
+    straight away, and **Ctrl+Z** undoes the change only in files that are open. For PHP the
+    rename is built from the usages Intelephense finds (its own rename needs a paid licence):
+    `$total` stays a variable when you type `sum`, and `\App\Foo` becomes `\App\Bar`. A class
+    keeps its file name;
+  - **Ctrl+Alt+L** (or **Shift+Alt+F**) reformats the file, or only the selection when there is
+    one. JSON, CSS, HTML, TypeScript and PHP can be formatted;
+  - **Alt+Enter** opens the quick fixes and refactorings for the caret or the selection - in
+    TypeScript and JavaScript, for one, adding a missing import or extracting a function. PHP
+    has none without a paid Intelephense licence.
+  If the server stops, the status says why and offers **Retry**.
+- **Folding:** the arrows beside the line numbers fold a function, class or block away;
+  **Ctrl+Shift+[** folds the block the caret is in and **Ctrl+Shift+]** unfolds it.
+- Every tab keeps its own undo history (**Ctrl+Z**, **Ctrl+Y** or **Ctrl+Shift+Z**) for as long as
+  it is open.
+- **Right-click a file or folder** for new file, new folder, cut, copy, paste, duplicate, rename,
+  copy path, **Show in File Explorer**, file history or blame, and last **Delete** (to the Recycle
+  Bin, so it can be restored). **New file** and **New folder** on a file create it in the folder
+  that file sits in; right-click the empty space below the rows for the repository root.
+  **Drag a row onto a folder** to move it, or hold **Ctrl** while dropping to copy it. The buttons
+  above the tree make a new file or folder and show or hide the folders git ignores.
+- **Copy, cut and paste in the tree** work as in Windows Explorer. Click a row and press
+  **Ctrl+C** (copy) or **Ctrl+X** (cut; the row dims until it is pasted), click the folder it
+  should go to and press **Ctrl+V**. Pasted back into the folder it came from, a copy is named
+  with `-copy` before the extension: `index.php` becomes `index-copy.php`, then
+  `index-copy-2.php`, and `.env` becomes `.env-copy`. Folders are copied with everything in them.
+  **Ctrl+D** duplicates a row in place, **F2** renames it and **Delete** deletes it.
+  What you copy or cut in the tree can also be pasted in Windows Explorer (a cut is then moved
+  out of the repository), and pasted into a text field it is the file's path.
+- **Paste from Windows Explorer:** copy files or folders in Windows Explorer (or anywhere else:
+  a mail, a screenshot), click the folder in the tree you want them in, and press **Ctrl+V** (or
+  right-click and **Paste**). They are copied
   into that folder - a file you click hands it to the folder it sits in, the empty space below the
-  rows is the repository root, and an existing file is never overwritten. That still holds once
-  the clicked file is open in the editor: a copied file goes to the tree, copied text stays a
-  paste into the file. Folders cannot be
-  pasted: the clipboard hands over file contents only. A path on the clipboard works just as
-  well (**Copy as path** in Windows Explorer, or this tree's own **Copy absolute path**), and
-  that one has no size limit.
+  rows is the repository root, and an existing file is never overwritten (the copy gets a `-copy`
+  name instead). Folders come with everything in them, without a size limit. Files that were cut
+  in Windows Explorer are copied as well; the originals stay where they were. That still holds
+  once the clicked file is open in the editor: a copied file goes to the tree, copied text stays a
+  paste into the file. A path on the clipboard works just as well (**Copy as path** in Windows
+  Explorer, or this tree's own **Copy absolute path**).
+- **Drag files in from Windows Explorer** onto a folder in the tree (or onto the empty space
+  below the rows for the root) to copy them there, up to 20 MB each. A dragged folder arrives
+  without its contents, so the app says so instead: copy a folder and paste it with **Ctrl+V**.
 - **Press the left Shift twice** (or **Ctrl+Shift+N**) for **Go to file**: type part of a file
   name and pick it from the files of the project. A slash in what you type matches the folder as
   well (`models/user`), and `UserController:42` opens the file at line 42. Tick **Include ignored
@@ -335,7 +389,9 @@ you get the URL of the new pull request.
 
 To have a PR reviewed: the **Review with Claude** button on its row in the sidebar, or on the
 pull request itself, types the review instruction into a Claude session. **PR review** in the top
-row opens a session of its own for any pull request URL you paste into it.
+row opens a session of its own for any pull request URL you paste into it. When a review in such a
+tab finishes while you are elsewhere, you get a notification and the Claude mark on the tab beats
+until you open it.
 
 ## Terminals and Claude
 
@@ -365,7 +421,11 @@ row opens a session of its own for any pull request URL you paste into it.
   same: the input then says *Reply to Claude*, and your reply goes into that task at once instead of
   waiting behind it. Pick a branch under the input to make it a new task anyway. **Shift+Enter** or
   **Ctrl+Enter** is a new line, **Up** brings back an earlier prompt. Paste (a screenshot works
-  too), drop or add an image to show Claude something; it goes along with its task. Type **/** at
+  too), drop or add an image to show Claude something; it goes along with its task. **Drop any
+  other file on the chat** (a CSV, a Word or Excel file, a PDF, a log) or pick it with the
+  paperclip, and Claude reads it: the app keeps a copy in a folder of its own that Claude may
+  read, and names it under your prompt. Up to 10 files of 20 MB each per message; programs and
+  shortcuts (.exe, .msi, .lnk, ...) and folders are refused. Type **/** at
   the start for commands and skills (those run at once and are no task), **@** for a file of the
   repository; arrows pick one, **Enter** runs a command at once and **Tab** fills it in to add
   something after it. **Esc** (or **Stop**) ends the answer. The model is shown under the field and
@@ -384,7 +444,9 @@ row opens a session of its own for any pull request URL you paste into it.
   when the task ended opens in a window, with **Copy answer** and **Review changes**. A long prompt
   shows its first lines; **Show all** under it shows the whole text (and, on a done row, the
   details). **Drag** a waiting task to change its place in line, or press **Alt+Up** / **Alt+Down**
-  on it. Per task you can change it (while Claude works, Claude gets the new version at its next
+  on it. **Pause** a waiting task to hold it back: it keeps its place in line, the tasks behind it go
+  first, and **Resume** lets it start again once it is its turn (a paused task stays paused after a
+  restart). Per task you can change it (while Claude works, Claude gets the new version at its next
   step), cancel it, run it again, or **Reuse** and **Copy** its text; these buttons show when you
   point at a task. The magnifier finds older ones. A task shows the branch it ran on and the tokens
   it used (hover for how they split up). Above the input field a line says how many tasks wait,
@@ -420,6 +482,8 @@ row opens a session of its own for any pull request URL you paste into it.
   your limits* (such as **/doctor** and **/init**) let Claude do the work, like a prompt.
 - **The answer stands out:** once Claude has finished, the answer (what it wrote after its last
   step) sits on a soft green background.
+- **Copy a code block:** hover a code block in Claude's text (the dark box) and click **Copy** in
+  its top-right corner to put the whole block on the clipboard.
 - **Whether Claude is done** shows in one line above the input field: *Claude is working* (with
   how long, and **Stop**), *Still running in the background* when the answer is in but a command
   or subagent Claude started in the background is still going (Claude continues by itself when it
@@ -470,7 +534,10 @@ row opens a session of its own for any pull request URL you paste into it.
   repository (`.claude/skills`, checked in with it), and read-only the ones from your claude.ai
   account and from installed plugins. Claude picks a skill by itself when a request matches its
   description; **Use** at the end of a row types its command into the session to run it
-  explicitly. Click a skill to open it, or **New skill…** at the bottom to write one. The editor
+  explicitly. With a long list, type in the search field at the top to find a skill by name or
+  description (Enter opens the first hit), and click a group heading to fold or unfold it; the
+  claude.ai and plugin groups start folded, and the app remembers what you folded. Click a
+  skill to open it, or **New skill…** at the bottom to write one. The editor
   shows the whole `SKILL.md`; on the right, describe what the skill should do (or what should
   change) and click **Ask Claude**: Claude writes or rewrites the skill and puts it in the editor,
   with **Undo** if you prefer the old version. Left empty, it sharpens the description and
@@ -586,8 +653,12 @@ how many comments are open.
 
 ## Keyboard shortcuts
 
+The keyboard button at the top right (or **F1**) shows all of them in the app, with a filter to
+find one by what it does or by its key.
+
 | | |
 |---|---|
+| **F1** | This list of shortcuts, in the app (not while a terminal has the keyboard) |
 | **Ctrl+1 … Ctrl+6** | Git, Claude, Explorer, Terminal, Issues, Worktrees |
 | **Ctrl+`** | Jump to the Terminal view, and back to where you were |
 | **Ctrl+F** | Search the commits (Git view) |
@@ -595,6 +666,7 @@ how many comments are open.
 | **Ctrl+C** | Interrupt what the terminal is running |
 | **Ctrl+Shift+C** | Copy the terminal selection (selecting already copies it) |
 | **Ctrl+V** | Paste into the terminal (an image too, in a Claude session), or a copied file into the Explorer tree |
+| **Ctrl+C**, **Ctrl+X**, **Ctrl+D**, **F2**, **Delete** | On a row of the Explorer tree: copy, cut, duplicate, rename, delete |
 | **Ctrl+Enter**, **Shift+Enter** | A new line in Claude's input box instead of sending the prompt |
 | **Ctrl+S** | Save the file you are editing in the Explorer now |
 | **Left Shift twice**, **Ctrl+Shift+N** | Go to any file in the project by name; twice again includes ignored files and dependencies (Explorer) |
@@ -602,6 +674,11 @@ how many comments are open.
 | **Ctrl+E** | Recently used files (Explorer) |
 | **Ctrl+G** | Go to a line in the open file (Explorer) |
 | **Ctrl+B** | Go to where the name under the caret is defined (Explorer) |
+| **Alt+F7**, **Shift+F12** | Find the usages of the name under the caret (Explorer, with a language server) |
+| **Ctrl+Space** | Show the suggestions for what you are typing (Explorer, with a language server) |
+| **Shift+F6** | Rename the name under the caret everywhere it is used (Explorer, with a language server) |
+| **Ctrl+Alt+L**, **Shift+Alt+F** | Reformat the file, or the selection (Explorer, with a language server) |
+| **Alt+Enter** | Quick fixes and refactorings for the caret or the selection (Explorer, with a language server) |
 | **Ctrl+F**, **F3**, **Shift+F3** | Find in the open file, next and previous match (Explorer) |
 | **Ctrl+R** | Find and replace in the open file (Explorer) |
 | **Ctrl+/** | Comment the selected lines out or back in (Explorer) |
