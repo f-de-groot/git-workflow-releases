@@ -401,6 +401,12 @@ until you open it.
   button on a tab ends that session.
 - Terminals keep running in the background - on another repo tab, in another view. Only closing
   the tab itself ends a session.
+- **Name a Claude session:** a new one is called after the repository and a number
+  (`git-workflow #1`). **Right-click its tab** (or press the menu key on it) and type a name to tell
+  your sessions apart; leave the field empty to go back to the number. In a chat the session takes
+  the same name (as **/rename** does), so **/resume** lists it under that name; in Claude Terminal
+  only the tab changes. Typing **/rename a name** in a chat renames the tab as well, and a
+  conversation you pick up with **/resume** brings its name to the tab.
 - **A Claude session opens in Claude Terminal**, Claude Code's own interface. **Show in GitWorkflow
   Chat** in the view row continues the same conversation as a chat the app draws: your prompts,
   Claude's answers and the files it changed. **Show in Claude Terminal** brings it back, and the
