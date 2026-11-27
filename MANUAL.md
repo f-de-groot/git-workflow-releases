@@ -190,6 +190,12 @@ pull, push, **Create pull request…**, check out, **Create branch here…**, **
 **Create worktree from this commit** and, always in the last group, **Reset to this commit** and
 the deletes (also several branches at once after Ctrl-clicking them).
 
+Right-click a tag - in the sidebar or on its label in the graph - for the same kind of menu, in
+the same order: **Push tag**, the actions on its commit, **Create branch here…** and
+**Create tag here…**, **Copy tag name**, and last **Reset to this commit**, **Delete tag** and
+**Delete tag on** the remote. A right-click anywhere else on a commit row opens the commit's own
+menu, with the same groups in the same order.
+
 **Merging and rebasing is drag and drop:** drag a branch onto another branch and pick **Merge**,
 **Rebase**, **Interactive rebase** or **Reset** from the menu that always appears. Dragging a
 commit onto a branch offers **Cherry-pick** or **Reset**. Every confirmation names what it acts on
@@ -598,16 +604,24 @@ what it did. Switch the menu on with **Checklist and client presentation** under
   - **Website for the links:** the pages listed under a change link to the site the changes were
     checked on - often a test server the client cannot reach. Fill in the site where the client
     looks instead, such as the acceptance or production site, and every link moves there. The
-    app remembers it per repository. The links are clickable, in the PDF and in the shared
-    presentation alike. **Add screenshot** captures a page with the Edge
+    app remembers it per repository. The links in the PDF are clickable. **Add screenshot**
+    captures a page with the Edge
     or Chrome on your computer (desktop 1440x900 and/or mobile 390x844 - pick the defaults in
     Settings), or takes an image you paste (**Ctrl+V**) or drop. The capture only opens the page;
     it cannot log in or click.
   - **Marking a screenshot:** click a thumbnail to open it full size and draw a **Circle**, a
     **Box**, an **Arrow** or a **Number** on it. **Select** a mark and press **Delete** to remove
     it. Marks Claude suggests are dashed until you click **Use Claude's marks**.
+  - **Change the presentation:** type what to add or change (a slide about the new footer, a
+    shorter summary) and click **Change it**. Claude changes only that and keeps the other slides
+    as they are; **Make it again** is the one that starts over. If you saved a PDF before, it is
+    made again and saved over the same file.
+  - **Minimize** (the button beside the ✕) puts the presentation away while Claude writes or the
+    PDF is made. A chip in the bottom-right corner shows what it is doing and opens it again; when
+    it is done you get a notice, also from Windows when the app is not in front.
   - **Save as PDF…** saves the slides as a PDF where you pick, one slide per page, ready to send.
-    **Open PDF** opens it. Or share them online for the client to comment on: see below.
+    After that the button is **Update the PDF**, which saves over the same file without asking
+    (**Save as…** picks another place). **Open PDF** opens it.
 - **Where it is kept:** in the repository (or worktree) the session works in, under
   `.claude/checklists/`. That folder ignores itself, so nothing of it ever shows up in **git
   status** or a commit, and your own `.gitignore` is not touched.
@@ -615,47 +629,6 @@ what it did. Switch the menu on with **Checklist and client presentation** under
 Your company name and logo are set once under **Settings -> Claude**, **Presentations are
 prepared by**. They are in the dark band on the cover, where the logo is shown in white - so a
 logo in one colour (an SVG is best) works well.
-
-### Sharing a presentation with the client
-
-Instead of sending a PDF, you can put the slides online behind a secret link. The client opens it
-in a browser, clicks **Add comment** and then a spot on a slide, and leaves a comment there; you
-both can reply and resolve. The comments come back into the app.
-
-**Set up a review server once.** A review server is a small PHP folder on a web host: a
-project's acceptance domain, or one domain for all clients. It needs PHP 7.4 or newer and https.
-
-1. **Settings -> Claude -> Review servers -> Add review server.** Give it a name and the address
-   the folder will have, for example `https://acc.client.com/_review/`. Optionally fill in an
-   address that gets a mail when the client comments, and how many days a link may stay online
-   at most.
-2. **Download server files…** writes a folder `_review` with the files and a `config.php` of
-   its own. The admin key the app uses stays in your computer's credential store; the server
-   only gets its fingerprint.
-3. Upload that folder to the host, at the address you entered.
-4. **Test connection.** It warns when the server needs an update, when its data folder can be
-   reached from the web (Apache keeps it closed; for nginx or Caddy see the README in the
-   folder), or when the mail address has not reached the server yet.
-
-Changing the mail address or the number of days means downloading the files again and uploading
-`config.php`. Downloading again keeps the same key, so the shared presentations stay.
-
-**Share a presentation.** In **Presentation for the client**, under **Online for the client**:
-
-- Pick the server, the date the link stops working, and optionally a PIN or password
-  (**Make PIN** makes one), then **Put online**. **Copy link** and send it to the client. Send the
-  PIN separately; it is shown only until you close the dialog and kept nowhere.
-- After a change to the text or the screenshots, **Update** puts the new version on the same
-  link; the comments stay. You can also move the end date, set a new PIN or remove it there.
-- **Delete link…** takes the page and its comments off the server at once. If the server cannot
-  be reached, **Forget here** drops the link from the app only.
-
-**Read and answer the comments.** While a presentation is shared, its comments are on the right
-of the preview, and the same numbered pins are on the slides: click a pin or a comment to open
-it. Reply (as the name under **Presentations are prepared by**), **Resolve** or **Reopen**.
-**Refresh** fetches new ones. **Send to Claude** types the open comments into the Claude session,
-without pressing Enter: read them there first, then press Enter. The **Checklist** button shows
-how many comments are open.
 
 ## Keyboard shortcuts
 
