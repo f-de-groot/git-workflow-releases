@@ -440,8 +440,10 @@ until you open it.
   shortcuts (.exe, .msi, .lnk, ...) and folders are refused. Type **/** at
   the start for commands and skills (those run at once and are no task), **@** for a file of the
   repository; arrows pick one, **Enter** runs a command at once and **Tab** fills it in to add
-  something after it. **Esc** (or **Stop**) ends the answer. The model is shown under the field and
-  can be switched there; **New conversation** under the field (or **/clear**) starts a new
+  something after it. **Esc** (or **Stop**) ends the answer. The model and the effort are shown under the field
+  from the moment the chat starts, and each is a menu: a switch holds from Claude's next step,
+  also in the middle of an answer. A `/model` or `/effort` typed in the chat shows there too;
+  **New conversation** under the field (or **/clear**) starts a new
   conversation in the same tab.
 - **Tasks:** the **Tasks** button (in a chat) opens a column with the tasks of the conversation in
   that chat; **All chats** shows every task of the repository. After **/resume** the tasks of the
@@ -563,8 +565,8 @@ until you open it.
   numbers are. It only updates while a Claude session in the app is working; in between it shows
   the last known numbers, faded after half an hour. Claude Pro and Max only.
 - **Model and effort:** left of the usage, in the Claude view, the status bar shows the
-  model of the session on screen and its effort (and **Fast mode** when it is on). A `/model` or `/effort` switch shows up
-  with Claude's next answer.
+  model of the session on screen and its effort (and **Fast mode** when it is on), for a chat as
+  well as a terminal. A `/model` or `/effort` switch shows up with Claude's next answer.
 - **Drag a file onto a terminal tab** (a screenshot, say) and its path lands on the prompt, ready
   for you to type a question after it.
 
